@@ -1,17 +1,15 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    label: string;
-    alwaysShowOnMobile?: boolean;
-    underlineHeightRatio?: number;
-    underlinePaddingRatio?: number;
-  }>(),
-  {
-    alwaysShowOnMobile: false,
-    underlineHeightRatio: 0.1,
-    underlinePaddingRatio: 0.01,
-  }
-);
+const {
+  label,
+  alwaysShowOnMobile = false,
+  underlineHeightRatio = 0.1,
+  underlinePaddingRatio = 0.01,
+} = defineProps<{
+  label: string;
+  alwaysShowOnMobile?: boolean;
+  underlineHeightRatio?: number;
+  underlinePaddingRatio?: number;
+}>();
 
 const textRef = ref<HTMLSpanElement | null>(null);
 const isTouchDevice = ref(false);
@@ -22,11 +20,11 @@ const updateUnderlineStyles = () => {
   const fontSize = Number.parseFloat(getComputedStyle(textRef.value).fontSize);
   textRef.value.style.setProperty(
     "--underline-height",
-    `${fontSize * props.underlineHeightRatio}px`
+    `${fontSize * underlineHeightRatio}px`
   );
   textRef.value.style.setProperty(
     "--underline-padding",
-    `${fontSize * props.underlinePaddingRatio}px`
+    `${fontSize * underlinePaddingRatio}px`
   );
 };
 

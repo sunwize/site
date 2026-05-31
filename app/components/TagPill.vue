@@ -9,7 +9,7 @@ defineProps<{
   <component
     :is="href ? 'a' : 'span'"
     :href="href"
-    class="relative inline-block rounded-xl border border-black px-1 text-sm before:absolute before:inset-0 before:-z-10 before:bg-white before:blur-[0.5em] before:content-[''] hover:bg-black hover:text-white hover:before:bg-transparent"
+    class="text-white-backdrop rounded-xl border border-black px-1 text-sm hover:bg-black hover:text-white hover:before:bg-transparent"
   >
     {{ label }}
   </component>

@@ -7,14 +7,18 @@ defineProps<{
 </script>
 
 <template>
-  <PatternCard :href="project.href" :external="project.href.startsWith('http')" :aria-label="project.title">
+  <PatternCard
+    :href="project.href"
+    :external="project.href.startsWith('http')"
+    :aria-label="project.title"
+  >
     <h4 class="text-wrap text-lg font-bold">
-      <span class="relative inline-block before:absolute before:inset-0 before:-z-10 before:bg-white before:blur-[0.5em] before:content-['']">
+      <span class="text-white-backdrop">
         {{ project.title }}
       </span>
     </h4>
     <div class="py-1" />
-    <p class="text-sm">
+    <p class="text-sm text-white-backdrop">
       {{ project.description }}
     </p>
 

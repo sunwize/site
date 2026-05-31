@@ -9,13 +9,13 @@ defineProps<{
 <template>
   <PatternCard :href="post.href" :aria-label="post.title">
     <h4 class="text-wrap text-lg font-bold">
-      <span class="relative inline-block before:absolute before:inset-0 before:-z-10 before:bg-white before:blur-[0.5em] before:content-['']">
+      <span class="text-white-backdrop">
         {{ post.title }}
       </span>
     </h4>
     <div class="py-1" />
     <p class="text-sm italic">
-      <span class="relative inline-block before:absolute before:inset-0 before:-z-10 before:bg-white before:blur-[0.5em] before:content-['']">
+      <span class="text-white-backdrop">
         <time :datetime="post.date">
           {{ new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(post.date)) }}
         </time>

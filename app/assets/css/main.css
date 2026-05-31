@@ -99,3 +99,17 @@
 @utility bg-hatch {
   background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><path stroke="%23000" stroke-width=".5" d="m0 0 4 4Zm4 0L0 4Z"/></svg>');
 }
+
+@utility text-white-backdrop {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    background-color: white;
+    filter: blur(0.5em);
+  }
+}

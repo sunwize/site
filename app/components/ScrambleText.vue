@@ -1,18 +1,12 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    text: string;
-    maxIterations?: number;
-    speed?: number;
-  }>(),
-  {
-    maxIterations: 8,
-    speed: 45,
-  },
-);
+const { text, maxIterations = 8, speed = 45 } = defineProps<{
+  text: string;
+  maxIterations?: number;
+  speed?: number;
+}>();
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+";
-const displayText = ref(props.text);
+const displayText = ref(text);
 let interval: ReturnType<typeof setInterval> | undefined;
 
 const clearScramble = () => {
@@ -27,7 +21,7 @@ const scramble = () => {
 
   let iterations = 0;
   interval = setInterval(() => {
-    displayText.value = props.text
+    displayText.value = text
       .split("")
       .map((character) => {
         if (character === " ") return " ";
@@ -37,11 +31,11 @@ const scramble = () => {
 
     iterations += 1;
 
-    if (iterations >= props.maxIterations) {
+    if (iterations >= maxIterations) {
       clearScramble();
-      displayText.value = props.text;
+      displayText.value = text;
     }
-  }, props.speed);
+  }, speed);
 };
 
 onBeforeUnmount(clearScramble);
