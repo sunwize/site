@@ -228,6 +228,11 @@ hr {
   @apply rounded border border-gray-200 bg-gray-50 px-1 py-0.5 text-[0.9em];
 }
 
+.prose :where(:not(pre) > code)::before,
+.prose :where(:not(pre) > code)::after {
+  content: none;
+}
+
 .prose :where(th) {
   font-weight: 600;
 }
