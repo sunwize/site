@@ -193,6 +193,41 @@ hr {
   font-weight: 400;
 }
 
+.prose :where(.code-block) {
+  @apply my-6 overflow-hidden rounded-md border border-gray-200 bg-white;
+}
+
+.prose :where(.code-block__header) {
+  @apply flex min-h-10 items-center justify-between gap-3 border-b border-gray-200 bg-gray-50 px-4 py-2 text-xs text-gray-600;
+}
+
+.prose :where(.code-block__label) {
+  @apply truncate font-mono;
+  font-weight: 600;
+}
+
+.prose :where(.code-block__copy) {
+  @apply shrink-0 rounded border border-gray-300 bg-white px-2 py-1 font-mono text-[11px] leading-none text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black;
+  font-weight: 600;
+}
+
+.prose :where(.code-block pre.shiki) {
+  @apply m-0 overflow-x-auto rounded-none border-0 bg-transparent p-4 text-sm leading-6;
+}
+
+.prose :where(.code-block pre.shiki code) {
+  @apply font-mono;
+  font-weight: 400;
+}
+
+.prose :where(.code-block pre.shiki code .line) {
+  display: block;
+}
+
+.prose :where(:not(pre) > code) {
+  @apply rounded border border-gray-200 bg-gray-50 px-1 py-0.5 text-[0.9em];
+}
+
 .prose :where(th) {
   font-weight: 600;
 }

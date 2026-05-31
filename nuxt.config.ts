@@ -11,6 +11,29 @@ export default defineNuxtConfig({
   modules: ["@nuxt/content"],
   css: ["~/assets/css/main.css"],
   content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: "github-light",
+            dark: "github-dark",
+          },
+          langs: [
+            "bash",
+            "css",
+            "html",
+            "js",
+            "jsx",
+            "json",
+            "md",
+            "ts",
+            "tsx",
+            "vue",
+            "yaml",
+          ],
+        },
+      },
+    },
     renderer: {
       anchorLinks: {
         h2: true,
