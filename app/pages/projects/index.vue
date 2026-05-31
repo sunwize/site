@@ -8,9 +8,7 @@ useSeoMeta({
 <template>
   <section>
     <h1 class="text-4xl font-bold">Projects</h1>
-    <div class="py-3" />
-    <hr>
-    <div class="py-3" />
+    <hr />
     <article class="prose">
       <p>Projects will live here.</p>
     </article>

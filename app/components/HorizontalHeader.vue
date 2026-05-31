@@ -32,7 +32,9 @@ const { keyword } = useRandomKeyword();
       </div>
     </div>
     <div class="py-3" />
-    <div class="grid grid-cols-4 gap-y-2 xs:flex xs:max-w-screen xs:flex-row xs:flex-wrap xs:justify-evenly">
+    <div
+      class="grid grid-cols-4 gap-y-2 xs:flex xs:max-w-screen xs:flex-row xs:flex-wrap xs:justify-evenly"
+    >
       <HeaderExternalLink
         v-for="link in SOCIAL_LINKS"
         :key="link.href"
