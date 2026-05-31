@@ -8,12 +8,28 @@ const {
   external?: boolean;
   ariaLabel?: string;
 }>();
+
+const isInternalLink = computed(() => href && !external);
 </script>
 
 <template>
   <div class="relative">
-    <component
-      :is="href ? 'a' : 'div'"
+    <NuxtLink
+      v-if="isInternalLink"
+      :to="href"
+      :aria-label="ariaLabel"
+      class="peer block"
+    >
+      <div class="relative overflow-hidden rounded-md border-2 border-black">
+        <div
+          class="relative z-10 flex h-full w-full flex-col items-start bg-white bg-dots p-3"
+        >
+          <slot />
+        </div>
+      </div>
+    </NuxtLink>
+    <a
+      v-else-if="href"
       :href="href"
       :target="external ? '_blank' : undefined"
       :rel="external ? 'noopener noreferrer' : undefined"
@@ -27,7 +43,16 @@ const {
           <slot />
         </div>
       </div>
-    </component>
+    </a>
+    <div v-else :aria-label="ariaLabel" class="peer block">
+      <div class="relative overflow-hidden rounded-md border-2 border-black">
+        <div
+          class="relative z-10 flex h-full w-full flex-col items-start bg-white bg-dots p-3"
+        >
+          <slot />
+        </div>
+      </div>
+    </div>
     <div
       class="absolute left-[0.5em] top-[0.5em] -z-10 h-full w-full rounded-md bg-hatch transition-[top] duration-300 peer-hover:top-[-0.5em]"
       aria-hidden="true"

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { formatPostDate } from "~/utils/content";
 import { SITE_TITLE } from "~/utils/site";
+import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
 const slug = route.params.slug;
 const path = `/blog/${Array.isArray(slug) ? slug.join("/") : slug}`;
+const viewTransitionName = (part: string) =>
+  toViewTransitionName("blog", path, part);
 
 const { data: post } = await useAsyncData(`blog-${path}`, () =>
   queryCollection("blog").path(path).first()
@@ -41,9 +44,17 @@ useSeoMeta({
       </div>
     </div>
 
-    <h1 class="text-4xl font-bold">{{ post.title }}</h1>
+    <h1
+      class="text-4xl font-bold"
+      :style="{ viewTransitionName: viewTransitionName('title') }"
+    >
+      {{ post.title }}
+    </h1>
     <div class="py-1" />
-    <time :datetime="new Date(post.pubDate).toISOString()">
+    <time
+      :datetime="new Date(post.pubDate).toISOString()"
+      :style="{ viewTransitionName: viewTransitionName('date') }"
+    >
       {{ formatPostDate(post.pubDate) }}
     </time>
 
