@@ -1,5 +1,6 @@
 export const SITE_TITLE = "Colin Clisson";
 export const SITE_DESCRIPTION = "Personal website";
+export const SITE_LOCATION = "Montréal, QC";
 
 export const JS_KEYWORDS = [
   "break",
@@ -57,3 +58,25 @@ export const SOCIAL_LINKS = [
   { href: "mailto:colin.clisson@gmail.com", label: "Email" },
   { href: "/rss.xml", label: "RSS" },
 ] as const;
+
+export type BlogPostPreview = {
+  title: string;
+  href: string;
+  date: string;
+  tags?: ReadonlyArray<string>;
+};
+
+export type VideoPreview = {
+  title: string;
+  href: string;
+  date: string;
+  thumbnail: string;
+  external?: boolean;
+};
+
+export type ProjectPreview = {
+  title: string;
+  href: string;
+  description: string;
+  tags?: ReadonlyArray<string>;
+};
