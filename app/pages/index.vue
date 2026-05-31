@@ -1,26 +1,13 @@
 <script setup lang="ts">
-import type { BlogPostPreview, ProjectPreview, VideoPreview } from "~/utils/site";
+import { sortBlogPostsByPubDateDesc, toBlogPostPreview } from "~/utils/content";
+import type { ProjectPreview, VideoPreview } from "~/utils/site";
 
-const recentPosts: BlogPostPreview[] = [
-  {
-    title: "Designing with constraints",
-    href: "/blog/designing-with-constraints",
-    date: "2026-01-12",
-    tags: ["design"],
-  },
-  {
-    title: "Notes on durable software",
-    href: "/blog/durable-software",
-    date: "2025-10-26",
-    tags: ["engineering"],
-  },
-  {
-    title: "Complexity has a carrying cost",
-    href: "/blog/complexity-carrying-cost",
-    date: "2025-08-29",
-    tags: ["systems"],
-  },
-];
+const { data: recentPosts } = await useAsyncData("home-recent-posts", async () => {
+  const allPosts = await queryCollection("blog").all();
+  return sortBlogPostsByPubDateDesc(allPosts.filter((post) => !post.draft))
+    .slice(0, 3)
+    .map(toBlogPostPreview);
+});
 
 const recentVideos: VideoPreview[] = [
   {
