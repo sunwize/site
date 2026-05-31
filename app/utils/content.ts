@@ -15,6 +15,13 @@ export const toBlogPostPreview = (post: BlogCollectionItem): BlogPostPreview => 
   tags: post.tags ?? [],
 });
 
+export const formatPostDate = (date: Date | string) =>
+  new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(date));
+
 export const sortBlogPostsByPubDateDesc = <T extends { pubDate: Date | string }>(
   posts: T[],
 ) =>

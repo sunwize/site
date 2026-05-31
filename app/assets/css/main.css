@@ -83,7 +83,8 @@
 
 @theme {
   --font-sans: "Ioskeley Mono", sans-serif;
-  --font-mono: "Ioskeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: "Ioskeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
   --breakpoint-xs: 480px;
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
@@ -112,4 +113,8 @@
     background-color: white;
     filter: blur(0.5em);
   }
+}
+
+hr {
+  @apply border-gray-200;
 }

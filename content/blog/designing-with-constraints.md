@@ -8,8 +8,6 @@ tags:
 draft: false
 ---
 
-# Designing with constraints
-
 Constraints make decisions cheaper. A small set of rules around typography, spacing, and interaction can make a personal site feel more intentional than a much larger visual system.
 
 ## Start with the surface

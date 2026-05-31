@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { formatPostDate } from "~/utils/content";
 import type { BlogPostPreview } from "~/utils/site";
 
 defineProps<{
@@ -17,20 +18,13 @@ defineProps<{
     <p class="text-sm italic">
       <span class="text-white-backdrop">
         <time :datetime="post.date">
-          {{ new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(post.date)) }}
+          {{ formatPostDate(post.date) }}
         </time>
       </span>
     </p>
 
     <template v-if="post.tags?.length" #overlay>
-      <div class="absolute bottom-2 right-2 z-10 flex gap-1">
-        <TagPill
-          v-for="tag in post.tags"
-          :key="tag"
-          :label="tag"
-          :href="`/blog/tags/${tag}`"
-        />
-      </div>
+      <TagRow :tags="post.tags" class="absolute bottom-2 right-2 z-10" />
     </template>
   </PatternCard>
 </template>

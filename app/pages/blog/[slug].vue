@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { formatPostDate } from "~/utils/content";
+import { SITE_TITLE } from "~/utils/site";
+
 const route = useRoute();
 const slug = route.params.slug;
 const path = `/blog/${Array.isArray(slug) ? slug.join("/") : slug}`;
 
 const { data: post } = await useAsyncData(`blog-${path}`, () =>
-  queryCollection("blog").path(path).first(),
+  queryCollection("blog").path(path).first()
 );
 
 if (!post.value) {
@@ -15,15 +18,47 @@ if (!post.value) {
 }
 
 useSeoMeta({
-  title: () => post.value?.title ?? "Article",
+  title: () =>
+    post.value ? `${post.value.title} | ${SITE_TITLE} | Blog` : "Article",
   description: () => post.value?.description ?? undefined,
+  robots: () => (post.value?.draft ? "noindex, nofollow" : undefined),
 });
 </script>
 
 <template>
-  <article v-if="post" class="prose">
-    <NuxtLink to="/blog" class="text-sm no-underline">Blog</NuxtLink>
-    <div class="py-2" />
-    <ContentRenderer :value="post" />
-  </article>
+  <section v-if="post">
+    <div
+      v-if="post.draft"
+      class="mb-6 rounded-lg border-2 border-orange-400 bg-orange-50 p-4"
+    >
+      <div class="flex items-center gap-3">
+        <div class="text-orange-800">
+          <p class="font-semibold">This is a draft</p>
+          <p class="text-sm">
+            Please do not share it. Any feedback is appreciated.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-4xl font-bold">{{ post.title }}</h1>
+    <div class="py-1" />
+    <time :datetime="new Date(post.pubDate).toISOString()">
+      {{ formatPostDate(post.pubDate) }}
+    </time>
+
+    <template v-if="post.updatedDate">
+      <div class="py-1" />
+      <div>Last updated: {{ formatPostDate(post.updatedDate) }}</div>
+    </template>
+
+    <div class="py-1" />
+    <TagRow :tags="post.tags" />
+    <div class="py-3" />
+
+    <hr />
+    <article class="prose">
+      <ContentRenderer :value="post" />
+    </article>
+  </section>
 </template>

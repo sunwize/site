@@ -8,8 +8,6 @@ tags:
 draft: false
 ---
 
-# Notes on durable software
-
 Durable software is not only software that keeps running. It is software that remains possible to change after the original context has faded.
 
 ## Pressure

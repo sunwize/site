@@ -13,7 +13,6 @@ export default defineContentConfig({
         updatedDate: z.coerce.date().optional(),
         tags: z.array(z.string()).default([]),
         draft: z.boolean().default(false),
-        substack: z.string().optional(),
       }),
     }),
   },
