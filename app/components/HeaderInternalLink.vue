@@ -7,6 +7,6 @@ defineProps<{
 
 <template>
   <NuxtLink :to="href" class="underline md:no-underline">
-    <AnimatedUnderline :label="label" always-visible />
+    <AnimatedUnderline :label="label" always-show-on-mobile />
   </NuxtLink>
 </template>
