@@ -6,7 +6,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div v-if="props.tags?.length" class="flex flex-wrap gap-1">
+  <div v-if="props.tags?.length" class="flex flex-wrap gap-2.5">
     <TagPill
       v-for="tag in props.tags"
       :key="tag"
