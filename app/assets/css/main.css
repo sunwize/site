@@ -116,18 +116,98 @@
 }
 
 hr {
-  @apply border-gray-200;
+  @apply border-gray-200 my-6;
+}
+
+.prose {
+  @apply max-w-none text-black;
+  font-weight: 400;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose :where(a) {
+  font-weight: 600;
+}
+
+.prose :where(strong) {
+  font-weight: 600;
+}
+
+.prose :where(ol > li::marker) {
+  font-weight: 400;
+}
+
+.prose :where(dt) {
+  font-weight: 600;
+}
+
+.prose :where(blockquote) {
+  font-weight: 600;
+}
+
+.prose :where(h1) {
+  font-weight: 800;
+}
+
+.prose :where(h1 strong) {
+  font-weight: 900;
 }
 
 .prose :where(h2) {
-  @apply mt-8 border-t border-gray-200 pt-3 font-bold text-black;
+  @apply mt-8 text-black;
+  font-weight: 700;
 }
 
-.prose :where(h2:first-child) {
-  @apply mt-0 border-t-0 pt-0;
+.prose :where(h2 strong) {
+  font-weight: 800;
 }
 
-.prose :where(h2, h3, h4) > a {
+.prose :where(h3) {
+  font-weight: 600;
+}
+
+.prose :where(h3 strong) {
+  font-weight: 700;
+}
+
+.prose :where(h4) {
+  font-weight: 600;
+}
+
+.prose :where(h4 strong) {
+  font-weight: 700;
+}
+
+.prose :where(kbd) {
+  font-weight: 600;
+}
+
+.prose :where(code) {
+  font-weight: 600;
+}
+
+.prose :where(pre) {
+  font-weight: 400;
+}
+
+.prose :where(th) {
+  font-weight: 600;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) :where(a) {
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) > a,
+.prose :where(h1, h2, h3, h4, h5, h6) a[linkedheading] {
   position: relative;
   color: inherit;
   font-weight: inherit;
@@ -135,20 +215,14 @@ hr {
 }
 
 @variant lg {
-  .prose :where(h2, h3, h4) > a::before {
+  .prose :where(h1, h2, h3, h4, h5, h6) > a:hover::before,
+  .prose :where(h1, h2, h3, h4, h5, h6) a[linkedheading]:hover::before {
     content: "#";
     position: absolute;
-    top: -1px;
     right: 100%;
-    margin-right: 0.25em;
-    @apply text-gray-400;
-    opacity: 0;
-    transition: opacity 150ms ease;
+    transform: translateX(-0.35rem);
+    @apply text-gray-400 no-underline;
     font-weight: normal;
     pointer-events: none;
-  }
-
-  .prose :where(h2, h3, h4):hover > a::before {
-    opacity: 1;
   }
 }

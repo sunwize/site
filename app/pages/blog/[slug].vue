@@ -54,7 +54,6 @@ useSeoMeta({
 
     <div class="py-1" />
     <TagRow :tags="post.tags" />
-    <div class="py-3" />
 
     <hr />
     <article class="prose">
