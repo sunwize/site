@@ -1,1 +1,87 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-ExtraBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-Black.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ioskeley Mono";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/IoskeleyMono-BlackItalic.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: "Ioskeley Mono", sans-serif;
+  --font-mono: "Ioskeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
