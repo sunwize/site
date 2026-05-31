@@ -118,3 +118,37 @@
 hr {
   @apply border-gray-200;
 }
+
+.prose :where(h2) {
+  @apply mt-8 border-t border-gray-200 pt-3 font-bold text-black;
+}
+
+.prose :where(h2:first-child) {
+  @apply mt-0 border-t-0 pt-0;
+}
+
+.prose :where(h2, h3, h4) > a {
+  position: relative;
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+@variant lg {
+  .prose :where(h2, h3, h4) > a::before {
+    content: "#";
+    position: absolute;
+    top: -1px;
+    right: 100%;
+    margin-right: 0.25em;
+    @apply text-gray-400;
+    opacity: 0;
+    transition: opacity 150ms ease;
+    font-weight: normal;
+    pointer-events: none;
+  }
+
+  .prose :where(h2, h3, h4):hover > a::before {
+    opacity: 1;
+  }
+}
