@@ -53,10 +53,9 @@ export const MAIN_NAV_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { href: "https://github.com/colinclisson", label: "GitHub" },
-  { href: "https://www.linkedin.com/in/colinclisson/", label: "LinkedIn" },
-  { href: "mailto:colin.clisson@gmail.com", label: "Email" },
-  { href: "/rss.xml", label: "RSS" },
+  { href: "https://github.com/sunwize", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/colin-clisson", label: "LinkedIn" },
+  { href: "mailto:colinclissonhg@gmail.com", label: "Email" },
 ] as const;
 
 export type BlogPostPreview = {
