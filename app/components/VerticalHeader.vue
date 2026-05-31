@@ -5,7 +5,7 @@ const { keyword } = useRandomKeyword();
 </script>
 
 <template>
-  <nav class="flex flex-col items-start gap-y-2">
+  <nav class="md:sticky md:top-5 flex flex-col items-start gap-y-2">
     <SitePortrait />
     <div class="py-1" />
     <NuxtLink to="/">
