@@ -1,14 +1,20 @@
 import { JS_KEYWORDS, type JsKeyword } from "~/utils/site";
 
+const refresh = () => {
+  const index = Math.floor(Math.random() * 1000) % JS_KEYWORDS.length;
+  return JS_KEYWORDS[index] ?? "default";
+};
+
 export const useRandomKeyword = () => {
-  const keyword = useState<JsKeyword>("random-js-keyword", () => "default");
+  const router = useRouter();
 
-  const refresh = () => {
-    const index = Math.floor(Math.random() * 1000) % JS_KEYWORDS.length;
-    keyword.value = JS_KEYWORDS[index] ?? "default";
-  };
+  const keyword = useState<JsKeyword>("random-js-keyword", () => refresh());
 
-  onMounted(refresh);
+  router.afterEach((to, from) => {
+    if (to.path !== from.path) {
+      keyword.value = refresh();
+    }
+  });
 
   return {
     keyword,

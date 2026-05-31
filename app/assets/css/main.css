@@ -133,7 +133,7 @@ hr {
 }
 
 .prose :where(strong) {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .prose :where(ol > li::marker) {
