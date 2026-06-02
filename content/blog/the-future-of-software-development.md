@@ -40,7 +40,7 @@ Notice how I've been using the term _"software development"_ so far in this arti
 I could have said _"software engineering"_ instead, like many people do.
 This is because it's the point I'm trying to make:
 
-<p class="text-center italic font-bold">"Software engineering has never been about writing code."</p>
+<p class="text-center italic font-bold text-black">"Software engineering has never been about writing code."</p>
 
 From the very beginning, this industry has never been about writing code.
 It used to be one of the most time consuming parts of the job, sure...
@@ -65,4 +65,4 @@ The reality has shifted, we can either embrace it or get left behind.
 
 So for everyone out there feeling like they are being replaced by AI, I think the real question is:
 
-<p class="text-center italic font-bold">"What interests you the most? Building stuff or writing code?"</p>
+<p class="text-center italic font-bold text-black">"What interests you the most? Building stuff or writing code?"</p>

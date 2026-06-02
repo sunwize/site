@@ -20,7 +20,9 @@ const viewTransitionNameForPost = (post: BlogPostPreview, part: string) =>
     <h4 class="text-wrap text-lg font-bold">
       <span
         class="text-white-backdrop"
-        :style="{ viewTransitionName: viewTransitionNameForPost(post, 'title') }"
+        :style="{
+          viewTransitionName: viewTransitionNameForPost(post, 'title'),
+        }"
       >
         {{ post.title }}
       </span>
