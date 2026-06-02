@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { sortBlogPostsByPubDateDesc, toBlogPostPreview } from "~/utils/content";
+import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
 const tag = String(route.params.tag ?? "");
+const viewTransitionName = toViewTransitionName("blog", "tag", tag, "title");
 
 const { data: posts } = await useAsyncData(`blog-tag-${tag}`, async () => {
   const allPosts = await queryCollection("blog").all();
@@ -12,14 +14,16 @@ const { data: posts } = await useAsyncData(`blog-tag-${tag}`, async () => {
 });
 
 useSeoMeta({
-  title: `Tag: ${tag}`,
+  title: `Blog - ${tag}`,
   description: `Articles tagged ${tag}.`,
 });
 </script>
 
 <template>
   <section>
-    <h1 class="text-4xl font-bold">Tag: {{ tag }}</h1>
+    <h1 class="text-4xl font-bold" :style="{ viewTransitionName }">
+      Blog - {{ tag }}
+    </h1>
     <hr />
     <div class="text-black">
       <ul class="flex flex-col items-start gap-y-5">

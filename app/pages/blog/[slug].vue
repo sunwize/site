@@ -6,8 +6,21 @@ import { toViewTransitionName } from "~/utils/viewTransitions";
 const route = useRoute();
 const slug = route.params.slug;
 const path = `/blog/${Array.isArray(slug) ? slug.join("/") : slug}`;
+const selectedTag = ref<string>();
 const viewTransitionName = (part: string) =>
   toViewTransitionName("blog", path, part);
+const titleViewTransitionName = computed(() =>
+  selectedTag.value
+    ? toViewTransitionName("blog", "tag", selectedTag.value, "title")
+    : viewTransitionName("title")
+);
+const titleElement = useTemplateRef("titleElement");
+
+const selectTag = (tag: string) => {
+  const transitionName = toViewTransitionName("blog", "tag", tag, "title");
+  selectedTag.value = tag;
+  titleElement.value?.style.setProperty("view-transition-name", transitionName);
+};
 
 const { data: post } = await useAsyncData(`blog-${path}`, () =>
   queryCollection("blog").path(path).first()
@@ -45,8 +58,9 @@ useSeoMeta({
     </div>
 
     <h1
+      ref="titleElement"
       class="text-4xl font-bold"
-      :style="{ viewTransitionName: viewTransitionName('title') }"
+      :style="{ viewTransitionName: titleViewTransitionName }"
     >
       {{ post.title }}
     </h1>
@@ -64,7 +78,11 @@ useSeoMeta({
     </template>
 
     <div class="py-1" />
-    <TagRow :tags="post.tags" />
+    <TagRow
+      :tags="post.tags"
+      :tag-view-transitions="false"
+      @select="selectTag"
+    />
 
     <hr />
     <article class="prose">

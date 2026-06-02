@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import { toViewTransitionName } from "~/utils/viewTransitions";
+
 const props = defineProps<{
   tags?: ReadonlyArray<string>;
   highlight?: string;
+  tagViewTransitions?: boolean;
 }>();
+
+const emit = defineEmits<{
+  select: [tag: string];
+}>();
+
+const viewTransitionNameForTag = (tag: string) =>
+  toViewTransitionName("blog", "tag", tag, "title");
 </script>
 
 <template>
@@ -13,6 +23,12 @@ const props = defineProps<{
       :label="tag"
       :href="`/blog/tags/${tag}`"
       :active="highlight === tag"
+      :style="
+        props.tagViewTransitions === false
+          ? undefined
+          : { viewTransitionName: viewTransitionNameForTag(tag) }
+      "
+      @click="emit('select', tag)"
     />
   </div>
 </template>
