@@ -13,7 +13,7 @@ _I apologize in advance for my broken English. This is an attempt to express my 
 ---
 
 I think it comes as no surprise to anyone when I say that AI has fundamentally changed the way we build software.
-The reality has shifted from _"I have this idea, is it worth spending time building it?"_ to _"Here is the mvp, does it reflect what I initially wanted?"_.
+The reality has shifted from _"I have this idea, is it worth spending time building it?"_ to _"Took me 5min to get this mvp, what do I want to do with it?"_.
 The coding time has shrunk so much that the vast majority of ideas can quickly transform into a working prototype in a matter of hours if not minutes.
 So many features that used to be considered too complex/costly to build are now one prompt away.
 In this new landscape, many developers I've talked to are starting to worry about their future in the industry.
@@ -36,7 +36,7 @@ And so on...
 
 Until now.
 This change is now happening in software development as well, and it's happening fast.
-Notice how I used the term _"software development"_ so far in this article?
+Notice how I've been using the term _"software development"_ so far in this article?
 I could have said _"software engineering"_ instead, like many people do.
 This is because it's the point I'm trying to make:
 
