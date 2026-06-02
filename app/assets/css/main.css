@@ -120,8 +120,9 @@ hr {
 }
 
 .prose {
-  @apply max-w-none text-gray-700;
+  @apply text-gray-700;
   font-weight: 400;
+  max-width: 65ch;
 }
 
 .prose > :first-child {
