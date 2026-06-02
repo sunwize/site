@@ -52,7 +52,7 @@ useSeoMeta({
     </h1>
     <div class="py-1" />
     <time
-      :datetime="new Date(post.pubDate).toISOString()"
+      :datetime="post.pubDate"
       :style="{ viewTransitionName: viewTransitionName('date') }"
     >
       {{ formatPostDate(post.pubDate) }}
