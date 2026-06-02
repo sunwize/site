@@ -1,10 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const effectLanguageServicePlugin = {
-  name: "@effect/language-service",
-} as const;
-
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
@@ -45,7 +41,6 @@ export default defineNuxtConfig({
   typescript: {
     tsConfig: {
       compilerOptions: {
-        plugins: [effectLanguageServicePlugin],
         exactOptionalPropertyTypes: true,
         noUnusedLocals: true,
       },
@@ -55,7 +50,6 @@ export default defineNuxtConfig({
     typescript: {
       tsConfig: {
         compilerOptions: {
-          plugins: [effectLanguageServicePlugin],
           exactOptionalPropertyTypes: true,
           noUnusedLocals: true,
         },
