@@ -15,7 +15,9 @@ const viewTransitionNameForProject = (project: ProjectPreview, part: string) =>
     :href="project.href"
     :external="project.href.startsWith('http')"
     :aria-label="project.title"
-    :style="{ viewTransitionName: viewTransitionNameForProject(project, 'card') }"
+    :style="{
+      viewTransitionName: viewTransitionNameForProject(project, 'card'),
+    }"
   >
     <div
       class="relative w-full overflow-hidden rounded-md bg-white pb-[56.25%]"

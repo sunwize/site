@@ -3,10 +3,6 @@ title: Personal Site
 description: Nuxt 4 rebuild with a compact mono visual system.
 thumbnail: https://placehold.co/1200x675/png?text=Personal+Site
 pubDate: 2026-06-02
-tags:
-  - nuxt
-  - tailwind
-  - content
 draft: false
 repoUrl: https://github.com/sunwize/site
 ---

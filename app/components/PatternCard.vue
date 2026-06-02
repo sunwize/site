@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from "vue-router";
+
 const {
   href,
   external = false,
@@ -16,7 +18,7 @@ const isInternalLink = computed(() => href && !external);
   <div class="relative">
     <NuxtLink
       v-if="isInternalLink"
-      :to="href"
+      :to="href as RouteLocationRaw"
       :aria-label="ariaLabel"
       class="peer block"
     >
