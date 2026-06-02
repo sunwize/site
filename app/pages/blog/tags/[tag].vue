@@ -24,6 +24,13 @@ useSeoMeta({
     <h1 class="text-4xl font-bold" :style="{ viewTransitionName }">
       Blog - {{ tag }}
     </h1>
+    <div class="py-1"></div>
+    <NuxtLink
+      to="/blog/tags"
+      class="underline md:no-underline md:hover:underline"
+    >
+      See all tags
+    </NuxtLink>
     <hr />
     <div class="text-black">
       <ul class="flex flex-col items-start gap-y-5">
