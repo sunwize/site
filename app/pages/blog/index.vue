@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { sortBlogPostsByPubDateDesc, toBlogPostPreview } from "~/utils/content";
+import { sortByPubDateDesc, toBlogPostPreview } from "~/utils/content";
 
 const { data: posts } = await useAsyncData("blog-posts", async () => {
   const allPosts = await queryCollection("blog").all();
-  return sortBlogPostsByPubDateDesc(allPosts.filter((post) => !post.draft)).map(
+  return sortByPubDateDesc(allPosts.filter((post) => !post.draft)).map(
     toBlogPostPreview
   );
 });

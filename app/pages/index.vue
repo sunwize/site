@@ -1,41 +1,29 @@
 <script setup lang="ts">
-import { sortBlogPostsByPubDateDesc, toBlogPostPreview } from "~/utils/content";
-import type { ProjectPreview, VideoPreview } from "~/utils/site";
+import {
+  sortByPubDateDesc,
+  toBlogPostPreview,
+  toProjectPreview,
+} from "~/utils/content";
 
 const { data: recentPosts } = await useAsyncData(
   "home-recent-posts",
   async () => {
     const allPosts = await queryCollection("blog").all();
-    return sortBlogPostsByPubDateDesc(allPosts.filter((post) => !post.draft))
+    return sortByPubDateDesc(allPosts.filter((post) => !post.draft))
       .slice(0, 3)
       .map(toBlogPostPreview);
   }
 );
 
-const recentVideos: VideoPreview[] = [
-  {
-    title: "A placeholder video card",
-    href: "https://www.youtube.com/",
-    date: "2025-08-19",
-    thumbnail: "https://i.ytimg.com/vi/wski7bnpW8Y/hqdefault.jpg",
-  },
-  {
-    title: "Another video placeholder",
-    href: "https://www.youtube.com/",
-    date: "2025-08-04",
-    thumbnail: "https://i.ytimg.com/vi/NGBijq6cdfc/hqdefault.jpg",
-    external: true,
-  },
-];
-
-const recentProjects: ProjectPreview[] = [
-  {
-    title: "Personal Site",
-    href: "/projects/personal-site",
-    description: "Nuxt 4 rebuild with a compact mono visual system.",
-    tags: ["nuxt"],
-  },
-];
+const { data: recentProjects } = await useAsyncData(
+  "home-recent-projects",
+  async () => {
+    const allProjects = await queryCollection("projects").all();
+    return sortByPubDateDesc(allProjects.filter((project) => !project.draft))
+      .slice(0, 3)
+      .map(toProjectPreview);
+  }
+);
 </script>
 
 <template>
@@ -58,19 +46,6 @@ const recentProjects: ProjectPreview[] = [
             class="w-full max-w-96"
           >
             <BlogPostCard :post="post" />
-          </li>
-        </ul>
-      </div>
-
-      <h2>Recent Videos</h2>
-      <div class="not-prose text-black">
-        <ul class="flex flex-col items-start gap-y-5">
-          <li
-            v-for="video in recentVideos"
-            :key="video.title"
-            class="w-full max-w-96"
-          >
-            <VideoCard :video="video" />
           </li>
         </ul>
       </div>

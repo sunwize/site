@@ -1,8 +1,18 @@
-import type { BlogPostPreview } from "~/utils/site";
+import type { BlogPostPreview, ProjectPreview } from "~/utils/site";
 
 type BlogCollectionItem = {
   path: string;
   title: string;
+  pubDate: string;
+  tags?: string[];
+  draft?: boolean;
+};
+
+type ProjectCollectionItem = {
+  path: string;
+  title: string;
+  description: string;
+  thumbnail: string;
   pubDate: string;
   tags?: string[];
   draft?: boolean;
@@ -17,6 +27,17 @@ export const toBlogPostPreview = (post: BlogCollectionItem): BlogPostPreview => 
   tags: post.tags ?? [],
 });
 
+export const toProjectPreview = (
+  project: ProjectCollectionItem
+): ProjectPreview => ({
+  title: project.title,
+  href: project.path,
+  description: project.description,
+  thumbnail: project.thumbnail,
+  date: project.pubDate,
+  tags: project.tags ?? [],
+});
+
 export const formatPostDate = (date: string) =>
   new Intl.DateTimeFormat("en", {
     month: "short",
@@ -25,7 +46,7 @@ export const formatPostDate = (date: string) =>
     timeZone: "UTC",
   }).format(parsePostDate(date));
 
-export const sortBlogPostsByPubDateDesc = <T extends { pubDate: string }>(
+export const sortByPubDateDesc = <T extends { pubDate: string }>(
   posts: T[],
 ) =>
   posts.toSorted(

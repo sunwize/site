@@ -31,5 +31,20 @@ export default defineContentConfig({
         draft: z.boolean().default(false),
       }),
     }),
+    projects: defineCollection({
+      type: "page",
+      source: "projects/*.md",
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        thumbnail: z.string(),
+        pubDate: contentDate,
+        updatedDate: contentDate.optional(),
+        tags: z.array(z.string()).default([]),
+        draft: z.boolean().default(false),
+        projectUrl: z.string().url().optional(),
+        repoUrl: z.string().url().optional(),
+      }),
+    }),
   },
 });

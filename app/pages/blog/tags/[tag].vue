@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { sortBlogPostsByPubDateDesc, toBlogPostPreview } from "~/utils/content";
+import { sortByPubDateDesc, toBlogPostPreview } from "~/utils/content";
 import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
@@ -8,7 +8,7 @@ const viewTransitionName = toViewTransitionName("blog", "tag", tag, "title");
 
 const { data: posts } = await useAsyncData(`blog-tag-${tag}`, async () => {
   const allPosts = await queryCollection("blog").all();
-  return sortBlogPostsByPubDateDesc(
+  return sortByPubDateDesc(
     allPosts.filter((post) => !post.draft && post.tags.includes(tag))
   ).map(toBlogPostPreview);
 });

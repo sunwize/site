@@ -48,7 +48,6 @@ export type JsKeyword = (typeof JS_KEYWORDS)[number];
 
 export const MAIN_NAV_LINKS = [
   { href: "/blog", label: "Blog" },
-  { href: "/videos", label: "Videos" },
   { href: "/projects", label: "Projects" },
 ] as const;
 
@@ -65,17 +64,11 @@ export type BlogPostPreview = {
   tags?: ReadonlyArray<string>;
 };
 
-export type VideoPreview = {
-  title: string;
-  href: string;
-  date: string;
-  thumbnail: string;
-  external?: boolean;
-};
-
 export type ProjectPreview = {
   title: string;
   href: string;
   description: string;
+  thumbnail: string;
+  date: string;
   tags?: ReadonlyArray<string>;
 };
