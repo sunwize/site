@@ -79,7 +79,7 @@ useSeoMeta({
 
     <div class="py-1" />
     <TagRow
-      :tags="post.tags"
+      :tags="post.tags ?? []"
       :tag-view-transitions="false"
       @select="selectTag"
     />
