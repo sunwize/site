@@ -1,15 +1,12 @@
 ---
 title: The future of software development
 description: How AI is shifting the way we build software.
+intro: I apologize in advance for my broken English. This is an attempt to express my thoughts and put it on paper.
 pubDate: 2026-06-01
 tags:
   - ai
   - engineering
 draft: false
----
-
-_I apologize in advance for my broken English. This is an attempt to express my thoughts and put it on paper._
-
 ---
 
 I think it comes as no surprise to anyone when I say that AI has fundamentally changed the way we build software.

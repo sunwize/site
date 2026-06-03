@@ -84,6 +84,13 @@ useSeoMeta({
       @select="selectTag"
     />
 
+    <template v-if="post.intro">
+      <hr />
+      <p class="prose italic text-gray-700">
+        {{ post.intro }}
+      </p>
+    </template>
+
     <hr />
     <article class="prose">
       <ContentRenderer :value="post" />
