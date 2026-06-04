@@ -1,7 +1,7 @@
 ---
 title: Mivory
 description: A cross-platform personal link library for saving, organizing, and rediscovering web content.
-thumbnail: https://placehold.co/1200x675/png?text=Mivory
+thumbnail: /projects/mivory-cover.png
 pubDate: 2026-06-03
 draft: false
 projectUrl: https://mivory.app
