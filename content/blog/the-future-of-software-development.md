@@ -51,15 +51,17 @@ It's a subtle mix of critical thinking, creativity, and technical expertise.
 It takes a whole different skillset than simply being good at writing code.
 
 This is how AI made me realize that coding has never been my favorite part of the job.
-In fact, the main reason I got into this industry was to **build stuff**;
+In fact, the main reason I got into this industry in the first place was to **build stuff**;
 The 20yo me trying to make his own Netflix because ~~I didn't want to pay for it~~ the challenge of building something ambitious from scratch was so exciting.
-Or that time I reversed engineered the youtube music api to build my own music player (while I was already paying for Spotify premium...).
+Or that time I reversed engineered the youtube music api to build my own music player.
+I've always been looking for that moment where you're facing a problem that seems impossible to solve at first, but you somehow figure out a solution.
+This is what excites me the most.
 
-This is the reason why I'm feeling grateful to live in the AI era.
+That's why I feel nothing but gratitude to live in the AI era.
 Not because it's going to take my job, but because it has enabled me to build stuff like never before.
-I can single-handedly take on things that used to take a team of 10 engineers and 6 months of work.
+I can single-handedly take on things that used to require a team of 10 engineers and 6 months of work.
 The reality has shifted, we can either embrace it or get left behind.
 
 So for everyone out there feeling like they are being replaced by AI, I think the real question is:
 
-<p class="text-center italic font-bold text-black">"What interests you the most? Building stuff or writing code?"</p>
+<p class="text-center italic font-bold text-black">What are you the most excited about?<br>Building stuff or writing code?</p>

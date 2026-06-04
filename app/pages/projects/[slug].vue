@@ -38,7 +38,9 @@ useSeoMeta({
     >
       <div class="text-orange-800">
         <p class="font-semibold">This is a draft</p>
-        <p class="text-sm">Please do not share it. Any feedback is appreciated.</p>
+        <p class="text-sm">
+          Please do not share it. Any feedback is appreciated.
+        </p>
       </div>
     </div>
 
@@ -63,32 +65,28 @@ useSeoMeta({
       class="overflow-hidden rounded-md border-2 border-black bg-white"
       :style="{ viewTransitionName: viewTransitionName('thumbnail') }"
     >
-      <img
-        :src="project.thumbnail"
-        alt=""
-        class="w-full object-cover"
-      />
+      <img :src="project.thumbnail" alt="" class="w-full object-cover" />
     </div>
 
     <div class="py-3" />
     <div class="flex flex-wrap gap-2.5">
-      <TagPill
-        v-for="tag in project.tags ?? []"
-        :key="tag"
-        :label="tag"
-      />
+      <TagPill v-for="tag in project.tags ?? []" :key="tag" :label="tag" />
     </div>
 
     <div v-if="project.projectUrl || project.repoUrl" class="py-3" />
-    <div v-if="project.projectUrl || project.repoUrl" class="flex flex-wrap gap-4">
+    <div
+      v-if="project.projectUrl || project.repoUrl"
+      class="flex flex-wrap gap-4"
+    >
       <a
         v-if="project.projectUrl"
         :href="project.projectUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="underline md:no-underline md:hover:underline"
+        class="inline-flex items-center gap-1 underline md:no-underline md:hover:underline"
       >
-        Visit project
+        <span>Visit project</span>
+        <Icon name="lucide:external-link" style="color: black" />
       </a>
       <a
         v-if="project.repoUrl"
