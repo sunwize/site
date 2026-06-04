@@ -2,7 +2,7 @@
 title: Mivory
 description: A cross-platform personal link library for saving, organizing, and rediscovering web content.
 thumbnail: /projects/mivory-cover.png
-pubDate: 2026-06-03
+pubDate: 2025-01-11
 draft: false
 projectUrl: https://mivory.app
 ---
