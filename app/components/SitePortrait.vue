@@ -4,6 +4,7 @@ const isFallbackVisible = ref(false);
 
 const size = 180;
 const imageSrc = "/images/portrait.jpg";
+const imageAlt = "Portrait de Colin Clisson";
 
 const vertexShaderSource = `
 precision mediump float;
@@ -219,6 +220,11 @@ onMounted(() => {
     return;
   }
 
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    isFallbackVisible.value = true;
+    return;
+  }
+
   const gl = element.getContext("webgl", {
     alpha: true,
     antialias: false,
@@ -389,7 +395,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative size-[180px]" aria-label="Portrait de Colin Clisson">
+  <div class="relative size-[180px]" :aria-label="imageAlt">
     <canvas
       ref="canvas"
       aria-hidden="true"
@@ -402,7 +408,18 @@ onMounted(() => {
       v-if="isFallbackVisible"
       class="absolute inset-0 size-[180px] object-cover grayscale"
       :src="imageSrc"
-      alt="Portrait de Colin Clisson"
+      :alt="imageAlt"
+      width="180"
+      height="180"
     />
+    <noscript>
+      <img
+        class="absolute inset-0 size-[180px] object-cover grayscale"
+        :src="imageSrc"
+        :alt="imageAlt"
+        width="180"
+        height="180"
+      >
+    </noscript>
   </div>
 </template>
