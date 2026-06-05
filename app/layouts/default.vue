@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { SITE_DESCRIPTION, SITE_TITLE } from "~/utils/site";
+import {
+  SITE_DESCRIPTION,
+  SITE_PREVIEW_IMAGE,
+  SITE_TITLE,
+  SITE_URL,
+} from "~/utils/site";
+
+const siteUrl = SITE_URL.replace(/\/$/, "");
+const previewImage = siteUrl
+  ? `${siteUrl}${SITE_PREVIEW_IMAGE}`
+  : SITE_PREVIEW_IMAGE;
 
 useSeoMeta({
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   ogTitle: SITE_TITLE,
   ogDescription: SITE_DESCRIPTION,
+  ogImage: previewImage,
+  ogImageWidth: 1254,
+  ogImageHeight: 1254,
+  ogImageType: "image/jpeg",
   twitterCard: "summary_large_image",
+  twitterImage: previewImage,
 });
 </script>
 
