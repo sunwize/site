@@ -18,6 +18,7 @@ useSeoMeta({
   <section>
     <h1 class="text-4xl font-bold">Projects</h1>
     <hr />
+    <h2 class="sr-only">All projects</h2>
     <div class="text-black">
       <ul class="flex flex-col items-start gap-y-5">
         <li

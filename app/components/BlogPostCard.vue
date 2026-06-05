@@ -17,7 +17,7 @@ const viewTransitionNameForPost = (post: BlogPostPreview, part: string) =>
     :aria-label="post.title"
     :style="{ viewTransitionName: viewTransitionNameForPost(post, 'card') }"
   >
-    <h4 class="text-wrap text-lg font-bold">
+    <h3 class="text-wrap text-lg font-bold">
       <span
         class="text-white-backdrop"
         :style="{
@@ -26,7 +26,7 @@ const viewTransitionNameForPost = (post: BlogPostPreview, part: string) =>
       >
         {{ post.title }}
       </span>
-    </h4>
+    </h3>
     <div class="py-1" />
     <p class="text-sm italic">
       <span

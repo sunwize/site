@@ -25,6 +25,7 @@ useSeoMeta({
       See all tags
     </NuxtLink>
     <hr />
+    <h2 class="sr-only">All posts</h2>
     <div class="text-black">
       <ul class="flex flex-col items-start gap-y-5">
         <li v-for="post in posts" :key="post.href" class="w-full max-w-96">

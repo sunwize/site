@@ -35,7 +35,7 @@ const viewTransitionNameForProject = (project: ProjectPreview, part: string) =>
       />
     </div>
     <div class="py-2" />
-    <h4 class="text-wrap text-lg font-bold">
+    <h3 class="text-wrap text-lg font-bold">
       <span
         class="text-white-backdrop"
         :style="{
@@ -44,7 +44,7 @@ const viewTransitionNameForProject = (project: ProjectPreview, part: string) =>
       >
         {{ project.title }}
       </span>
-    </h4>
+    </h3>
     <div class="py-1" />
     <p class="text-sm text-white-backdrop">
       {{ project.description }}
