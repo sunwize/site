@@ -25,10 +25,13 @@ const viewTransitionNameForProject = (project: ProjectPreview, part: string) =>
         viewTransitionName: viewTransitionNameForProject(project, 'thumbnail'),
       }"
     >
-      <img
+      <NuxtImg
         :src="project.thumbnail"
         alt=""
         class="absolute left-0 top-0 h-full w-full object-cover"
+        width="640"
+        height="360"
+        sizes="100vw sm:50vw lg:33vw"
       />
     </div>
     <div class="py-2" />

@@ -65,7 +65,14 @@ useSeoMeta({
       class="overflow-hidden rounded-md border-2 border-black bg-white"
       :style="{ viewTransitionName: viewTransitionName('thumbnail') }"
     >
-      <img :src="project.thumbnail" alt="" class="w-full object-cover" />
+      <NuxtImg
+        :src="project.thumbnail"
+        alt=""
+        class="w-full object-cover"
+        width="1200"
+        height="675"
+        sizes="100vw md:768px"
+      />
     </div>
 
     <div class="py-3" />
