@@ -395,7 +395,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative size-[180px]" :aria-label="imageAlt">
+  <figure class="relative size-[180px]">
     <canvas
       ref="canvas"
       aria-hidden="true"
@@ -405,12 +405,14 @@ onMounted(() => {
       height="180"
     />
     <img
-      v-if="isFallbackVisible"
       class="absolute inset-0 size-[180px] object-cover grayscale"
+      :class="{ invisible: !isFallbackVisible }"
       :src="imageSrc"
-      :alt="imageAlt"
+      alt=""
+      aria-hidden="true"
       width="180"
       height="180"
     />
-  </div>
+    <figcaption class="sr-only">{{ imageAlt }}</figcaption>
+  </figure>
 </template>

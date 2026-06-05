@@ -37,7 +37,7 @@ useSeoMeta({
         v-for="tag in tags"
         :key="tag.tag"
         :to="`/blog/tags/${tag.tag}`"
-        class="text-xl underline md:no-underline md:hover:underline"
+        class="focus-ring text-xl underline md:no-underline md:hover:underline"
       >
         {{ tag.tag }} ({{ tag.count }})
       </NuxtLink>

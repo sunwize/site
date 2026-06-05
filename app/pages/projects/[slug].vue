@@ -87,17 +87,18 @@ useSeoMeta({
         :href="project.projectUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 underline md:no-underline md:hover:underline"
+        class="focus-ring inline-flex items-center gap-1 underline md:no-underline md:hover:underline"
+        aria-label="Visit project (opens in a new tab)"
       >
         <span>Visit project</span>
-        <Icon name="lucide:external-link" style="color: black" />
       </a>
       <a
         v-if="project.repoUrl"
         :href="project.repoUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="underline md:no-underline md:hover:underline"
+        class="focus-ring underline md:no-underline md:hover:underline"
+        aria-label="View source (opens in a new tab)"
       >
         View source
       </a>

@@ -6,7 +6,11 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink :to="href" class="underline md:no-underline">
+  <NuxtLink
+    :to="href"
+    class="focus-ring underline md:no-underline"
+    active-class="font-semibold"
+  >
     <AnimatedUnderline :label="label" always-show-on-mobile />
   </NuxtLink>
 </template>

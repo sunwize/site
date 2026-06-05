@@ -7,13 +7,14 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink
-    v-if="href"
-    :to="href"
-    class="text-white-backdrop rounded-xl border border-black px-1 text-sm hover:bg-black hover:text-white hover:before:bg-transparent"
-    :class="{ 'bg-black text-white before:bg-transparent': active }"
-  >
-    {{ label }}
+  <NuxtLink v-if="href" :to="href">
+    <span
+      class="focus-ring text-white-backdrop rounded-xl border border-black px-1 text-sm hover:bg-black hover:text-white hover:before:bg-transparent"
+      :class="{ 'bg-black text-white before:bg-transparent': active }"
+      :aria-current="active ? 'page' : undefined"
+    >
+      {{ label }}
+    </span>
   </NuxtLink>
   <span
     v-else

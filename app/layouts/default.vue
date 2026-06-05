@@ -46,6 +46,7 @@ useSeoMeta({
 
 <template>
   <div class="flex min-h-screen w-full flex-col p-4 font-normal md:px-10 md:py-5">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="md:hidden">
       <HorizontalHeader />
       <div class="py-4" />
@@ -54,7 +55,7 @@ useSeoMeta({
       <aside class="hidden md:block md:w-1/4">
         <VerticalHeader />
       </aside>
-      <main class="w-full md:w-3/4 md:max-w-2xl">
+      <main id="main-content" class="w-full md:w-3/4 md:max-w-2xl" tabindex="-1">
         <slot />
       </main>
     </div>

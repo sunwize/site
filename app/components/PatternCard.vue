@@ -20,7 +20,7 @@ const isInternalLink = computed(() => href && !external);
       v-if="isInternalLink"
       :to="href as RouteLocationRaw"
       :aria-label="ariaLabel"
-      class="peer block"
+      class="focus-ring peer block rounded-md"
     >
       <div class="relative overflow-hidden rounded-md border-2 border-black">
         <div
@@ -36,7 +36,7 @@ const isInternalLink = computed(() => href && !external);
       :target="external ? '_blank' : undefined"
       :rel="external ? 'noopener noreferrer' : undefined"
       :aria-label="ariaLabel"
-      class="peer block"
+      class="focus-ring peer block rounded-md"
     >
       <div class="relative overflow-hidden rounded-md border-2 border-black">
         <div

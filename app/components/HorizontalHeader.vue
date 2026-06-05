@@ -5,13 +5,13 @@ const { keyword } = useRandomKeyword();
 </script>
 
 <template>
-  <nav>
+  <nav aria-label="Primary navigation">
     <div class="flex flex-row justify-between">
       <div class="flex flex-col items-start">
-        <NuxtLink to="/">
-          <h1 class="min-w-max text-2xl font-bold">{{ SITE_TITLE }}</h1>
+        <NuxtLink to="/" class="focus-ring">
+          <span class="block min-w-max text-2xl font-bold">{{ SITE_TITLE }}</span>
         </NuxtLink>
-        <h2 class="text-center italic">{{ keyword }}</h2>
+        <p class="text-center italic">{{ keyword }}</p>
       </div>
       <div class="flex w-full flex-wrap justify-end text-right">
         <div class="flex w-full justify-end gap-x-2">

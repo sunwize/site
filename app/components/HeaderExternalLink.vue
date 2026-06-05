@@ -8,7 +8,8 @@ defineProps<{
 <template>
   <a
     :href="href"
-    class="group relative max-w-22 -skew-y-5 overflow-hidden bg-black px-1 text-white transition duration-500 ease-out hover:bg-white hover:text-black xs:max-w-24"
+    :aria-label="`${label} (opens in a new tab)`"
+    class="focus-ring group relative max-w-22 -skew-y-5 overflow-hidden bg-black px-1 text-white transition duration-500 ease-out hover:bg-white hover:text-black xs:max-w-24"
     target="_blank"
     rel="noopener noreferrer"
   >

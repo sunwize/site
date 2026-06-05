@@ -20,7 +20,7 @@ useSeoMeta({
     <div class="py-1"></div>
     <NuxtLink
       to="/blog/tags"
-      class="underline md:no-underline md:hover:underline"
+      class="focus-ring underline md:no-underline md:hover:underline"
     >
       See all tags
     </NuxtLink>

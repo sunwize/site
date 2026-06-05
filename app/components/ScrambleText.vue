@@ -7,6 +7,7 @@ const { text, maxIterations = 8, speed = 45 } = defineProps<{
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+";
 const displayText = ref(text);
+const prefersReducedMotion = ref(false);
 let interval: ReturnType<typeof setInterval> | undefined;
 
 const clearScramble = () => {
@@ -17,6 +18,11 @@ const clearScramble = () => {
 };
 
 const scramble = () => {
+  if (prefersReducedMotion.value) {
+    displayText.value = text;
+    return;
+  }
+
   clearScramble();
 
   let iterations = 0;
@@ -38,11 +44,22 @@ const scramble = () => {
   }, speed);
 };
 
+onMounted(() => {
+  prefersReducedMotion.value = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+});
+
 onBeforeUnmount(clearScramble);
 </script>
 
 <template>
-  <span class="inline-block whitespace-pre-wrap" @mouseenter="scramble" @focus="scramble">
-    {{ displayText }}
+  <span
+    class="inline-block whitespace-pre-wrap"
+    @mouseenter="scramble"
+    @focus="scramble"
+  >
+    <span class="sr-only">{{ text }}</span>
+    <span aria-hidden="true">{{ displayText }}</span>
   </span>
 </template>

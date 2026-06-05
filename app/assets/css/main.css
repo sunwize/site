@@ -60,6 +60,14 @@ html {
   font-synthesis: none;
 }
 
+.focus-ring {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black;
+}
+
+.skip-link {
+  @apply sr-only fixed left-4 top-4 z-50 rounded border-2 border-black bg-white px-3 py-2 text-black focus:not-sr-only focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black;
+}
+
 hr {
   @apply border-gray-200 my-6;
 }
