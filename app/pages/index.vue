@@ -33,8 +33,16 @@ const { data: recentProjects } = await useAsyncData(
     <article class="prose">
       <h2>About</h2>
       <p>
-        Personal site shell in progress. The navigation, typography, layout, and
-        interaction primitives are now in place.
+        I'm a software engineer based in Montreal and working at Ivado Labs,
+        where I help our clients leverage AI to improve their business.
+      </p>
+      <p>
+        When I was a kid, I watched the internet revolution happening without
+        me. I used to wonder what my life would've looked like if I had been
+        part of it. Today, I'm lucky enough to live in the AI era, which is
+        arguably an even bigger revolution. But this time, things are different.
+        I'm not watching from the bench.
+        <strong>I'm in the game.</strong>
       </p>
 
       <h2>Recent Posts</h2>
