@@ -10,7 +10,7 @@ draft: false
 
 AI is such a powerful tool that it's easy to feel like you're not getting the most out of it.
 LLMs are an incredible source of raw intelligence, but without the right workflows and harnesses, they're just a waste of potential.
-Think of a car. You may have the best engine out there, but without the right chassis, wheels, and tires, you're not going anywhere.
+It's like having the best car engine out there, without the right chassis, wheels, and tires, you're not going anywhere.
 
 In my journey using AI, I've used many tools and experienced many workflows.
 I've learned a lot from each of them and made a lot of rookie mistakes.
@@ -26,7 +26,9 @@ Personally, I don't like using the built-in planning mode harnesses tend to offe
 I much prefer starting a conversation with the agent to discuss a new feature or a change until I feel confident we have enough context to start working on the task.
 It feels much more natural than generating a giant `PLAN.md` file that no one actually understands.
 Instead, the conversation history serves as the underlying context for the agent to understand the task and the desired outcome.
-This has been a game-changer in my workflow and it has also dramatically reduced the friction of starting a new task.
+Implementing this in my worflow has dramatically reduced the overhead of starting a new task.
+I don't have to know everything about the task upfront, I can start with a vague idea and let the agent guide me through the process.
+It helps me refine my vision and plan things out at the same time.
 
 ## Implement vertically
 
@@ -38,18 +40,23 @@ This enables me to iterate much more efficiently and get to the desired solution
 
 ## Test
 
-One the desired solution is in place, I like to manually test it thoroughly to make sure it works as expected.
-Once I'm happy with the result, I usually ask the agent to add some test coverage for the feature.
-This adds an additional layer of safety and provides some feedback loops for the future agents.
+Once the feature is in place, I like to manually test it thoroughly to make sure it works as expected.
+Once I'm happy with the result, I usually ask the agent to add some test coverage for the changes.
+This adds an additional layer of safety and provides some feedback loops for future agents.
+Skipping this step might result in regressions that are hard to catch later on.
 
 ## Code review
 
 The last step before shipping the code is to review it to catch the last discrepancies.
-You have plenty of options for this, from CodeRabbit and Greptile for cloud solutions, to local reviews with Claude Code or Codex code review.
+You have plenty of options for this, from _CodeRabbit_ and _Greptile_ in terms of cloud solutions, to local reviews with _Claude Code_ or _Codex code review_.
 I personnally like the `/thermo-nuclear-code-quality-review` skill from Cursor, because it fixes the main issue I have with most code review tools: they often lack ambition.
 Usually the agent treats the Git diffs as the boundary of what it can work on.
 This prompt goes a step further: it starts from the current branch's changes, then looks across the entire codebase for related opportunities.
 There are a lot more cool things about this skill, but I'll let you discover it for yourself.
+
+This is how I'm able to ship code with confidence: gradually building on top of the existing codebase while staying knowledgeable about how the system works.
+
+<p class="text-center italic font-bold text-black">"Happy shipping! ✌️"</p>
 
 ## Tools I use
 
@@ -69,4 +76,4 @@ There are a lot more cool things about this skill, but I'll let you discover it 
 
 - `GPT-5.5 Low/Medium` for everyday tasks
 - `Composer 2.5 Fast` because it's underrated
-- `Opus 4.8 Thinking High` for UI stuff
+- `Opus 4.8 High` for UI stuff
