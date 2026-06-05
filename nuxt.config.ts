@@ -4,7 +4,18 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/content", "@nuxt/icon", "@nuxt/image"],
+  site: {
+    url: "https://colinclisson.com",
+    name: "Colin Clisson",
+    indexable: true,
+  },
+  modules: [
+    "@nuxt/content",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxtjs/seo",
+    "nuxt-ai-ready",
+  ],
   css: ["~/assets/css/main.css"],
   content: {
     build: {

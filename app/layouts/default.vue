@@ -11,6 +11,25 @@ const previewImage = siteUrl
   ? `${siteUrl}${SITE_PREVIEW_IMAGE}`
   : SITE_PREVIEW_IMAGE;
 
+useHead({
+  link: [
+    {
+      rel: "preload",
+      href: "/fonts/BerkeleyMonoVariable-Regular.woff2",
+      as: "font",
+      type: "font/woff2",
+      crossorigin: "",
+    },
+    {
+      rel: "preload",
+      href: "/fonts/BerkeleyMonoVariable-Italic.woff2",
+      as: "font",
+      type: "font/woff2",
+      crossorigin: "",
+    },
+  ],
+});
+
 useSeoMeta({
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,

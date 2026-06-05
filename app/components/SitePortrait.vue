@@ -412,14 +412,5 @@ onMounted(() => {
       width="180"
       height="180"
     />
-    <noscript>
-      <img
-        class="absolute inset-0 size-[180px] object-cover grayscale"
-        :src="imageSrc"
-        :alt="imageAlt"
-        width="180"
-        height="180"
-      >
-    </noscript>
   </div>
 </template>

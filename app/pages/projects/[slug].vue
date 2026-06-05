@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { formatPostDate } from "~/utils/content";
-import { SITE_TITLE } from "~/utils/site";
 import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
@@ -22,9 +21,7 @@ if (!project.value) {
 
 useSeoMeta({
   title: () =>
-    project.value
-      ? `${project.value.title} | ${SITE_TITLE} | Projects`
-      : "Project",
+    project.value ? `${project.value.title} | Projects` : "Project",
   description: () => project.value?.description ?? undefined,
   robots: () => (project.value?.draft ? "noindex, nofollow" : undefined),
 });
