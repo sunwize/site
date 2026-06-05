@@ -52,6 +52,7 @@ export const MAIN_NAV_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
+  { href: "/resume.pdf", label: "Resume" },
   { href: "https://github.com/sunwize", label: "GitHub" },
   { href: "https://www.linkedin.com/in/colin-clisson", label: "LinkedIn" },
   { href: "mailto:colinclissonhg@gmail.com", label: "Email" },
