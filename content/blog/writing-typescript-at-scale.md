@@ -13,28 +13,6 @@ It's always been a challenge to ship code into a huge codebase with confidence.
 This is where [**Effect**](https://effect.website) comes in.
 To illustrate the problems and how Effect solves them, let's look at a few examples.
 
-## Promises
-
-Plain TypeScript gives you `Promise`, but it is limited in many ways:
-
-- It has no typed error channel.
-- It starts running immediately.
-- It does not model dependencies.
-- It does not model cancellation very explicitly.
-- It does not give you structured concurrency by default.
-
-Effect gives you lazy, composable descriptions of what the program does.
-
-```ts
-const program = Effect.gen(function* () {
-  const user = yield* getUser(userId);
-  const orders = yield* getOrders(user.id);
-  yield* sendEmail(user.email, orders);
-
-  return orders;
-});
-```
-
 ## Error typing
 
 In normal TypeScript, this function tells you nothing about how it can fail:
@@ -47,7 +25,7 @@ async function sendOrdersEmail(): Promise<void> {
 }
 ```
 
-The `program` function doesn't inherit from the error types of its child functions.
+The `program` function doesn't inherit from the error types its child functions can throw.
 This means you have to manually go down the call stack and handle each error type in the parent function, which is error-prone and verbose.
 
 ```ts
