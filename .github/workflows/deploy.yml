@@ -23,6 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
@@ -33,6 +38,15 @@ jobs:
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
+
+      - name: Verify Nuxt Image dependency
+        run: |
+          test -d node_modules/@nuxt/image
+          grep -q '"@nuxt/image"' package.json
+          grep -q '"@nuxt/image"' nuxt.config.ts
+
+      - name: Prepare Nuxt
+        run: bun run postinstall
 
       - name: Generate static site
         run: bun run generate
