@@ -29,27 +29,8 @@ const isHashOnlyRouteNavigation = (
   to.fullPath !== from.fullPath &&
   to.hash !== from.hash;
 
-const isHistoryKeyboardShortcut = (event: KeyboardEvent) =>
-  ((event.metaKey || event.altKey) &&
-    (event.key === "ArrowLeft" || event.key === "ArrowRight")) ||
-  (event.metaKey && (event.key === "[" || event.key === "]"));
-
 const wait = (duration: number) =>
   new Promise<void>((resolve) => window.setTimeout(resolve, duration));
-
-const isLazyRouteComponent = (
-  component: unknown
-): component is () => Promise<unknown> => typeof component === "function";
-
-const getInternalRoutePath = (href: string) => {
-  const url = new URL(href, window.location.href);
-
-  if (url.origin !== window.location.origin || isSamePageHashNavigation(url)) {
-    return null;
-  }
-
-  return `${url.pathname}${url.search}${url.hash}`;
-};
 
 const getHistoryPosition = () => {
   const position = window.history.state?.position;
@@ -61,7 +42,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   let isTransitioning = false;
   let shouldTransitionHistoryNavigation = false;
   let lastHistoryPosition = getHistoryPosition();
-  const preloadedRoutes = new Set<string>();
 
   const markHistoryNavigation = () => {
     shouldTransitionHistoryNavigation = true;
@@ -74,45 +54,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         resolve();
       });
     });
-
-  const preloadRoute = (to: string) => {
-    if (preloadedRoutes.has(to)) {
-      return;
-    }
-
-    preloadedRoutes.add(to);
-
-    for (const record of router.resolve(to).matched) {
-      for (const component of Object.values(record.components ?? {})) {
-        if (isLazyRouteComponent(component)) {
-          void component();
-        }
-      }
-    }
-
-    // Static hosts can serve the generated HTML immediately; warming it here
-    // removes the first-click network wait when Nuxt has not prefetched yet.
-    void fetch(to, { priority: "low" }).catch(() => {
-      preloadedRoutes.delete(to);
-    });
-  };
-
-  const preloadAnchorRoute = (event: Event) => {
-    const anchor = (event.target as Element | null)?.closest<HTMLAnchorElement>(
-      "a[href]"
-    );
-    const href = anchor?.getAttribute("href");
-
-    if (!href || anchor?.target || anchor?.hasAttribute("download")) {
-      return;
-    }
-
-    const routePath = getInternalRoutePath(href);
-
-    if (routePath) {
-      preloadRoute(routePath);
-    }
-  };
 
   const runWithViewTransition = (to: string) => {
     if (
@@ -143,16 +84,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   };
 
   window.addEventListener("popstate", markHistoryNavigation, { capture: true });
-
-  window.addEventListener(
-    "keydown",
-    (event) => {
-      if (isHistoryKeyboardShortcut(event)) {
-        markHistoryNavigation();
-      }
-    },
-    { capture: true }
-  );
 
   router.beforeResolve((to, from) => {
     const currentHistoryPosition = getHistoryPosition();
@@ -236,25 +167,18 @@ export default defineNuxtPlugin((nuxtApp) => {
         return;
       }
 
-      const routePath = getInternalRoutePath(href);
+      const url = new URL(href, window.location.href);
 
-      if (!routePath) {
+      if (
+        url.origin !== window.location.origin ||
+        isSamePageHashNavigation(url)
+      ) {
         return;
       }
 
       event.preventDefault();
-      preloadRoute(routePath);
-      runWithViewTransition(routePath);
+      runWithViewTransition(`${url.pathname}${url.search}${url.hash}`);
     },
     { capture: true }
   );
-
-  document.addEventListener("pointerenter", preloadAnchorRoute, {
-    capture: true,
-  });
-  document.addEventListener("focusin", preloadAnchorRoute, { capture: true });
-  document.addEventListener("touchstart", preloadAnchorRoute, {
-    capture: true,
-    passive: true,
-  });
 });

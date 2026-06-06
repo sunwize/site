@@ -77,7 +77,9 @@ useHead({
           name: SITE_TITLE,
           url: SITE_URL,
         },
-        sameAs: [project.value.projectUrl, project.value.repoUrl].filter(Boolean),
+        sameAs: [project.value.projectUrl, project.value.repoUrl].filter(
+          Boolean
+        ),
       }),
     },
   ],
@@ -144,10 +146,11 @@ useHead({
         :href="project.projectUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="focus-ring inline-flex items-center gap-1 underline md:no-underline md:hover:underline"
+        class="focus-ring inline-flex items-center gap-1.5 underline md:no-underline md:hover:underline"
         aria-label="Visit project (opens in a new tab)"
       >
         <span>Visit project</span>
+        <Icon name="ic:baseline-open-in-new" />
       </a>
       <a
         v-if="project.repoUrl"
