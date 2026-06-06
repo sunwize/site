@@ -1,13 +1,7 @@
-let isInitialClientRoute = true;
-
 export default defineNuxtRouteMiddleware((to) => {
-  if (import.meta.server || !isInitialClientRoute) {
+  if (import.meta.server) {
     return;
   }
 
-  isInitialClientRoute = false;
-
-  if (to.path !== "/") {
-    to.meta.viewTransition = false;
-  }
+  to.meta.viewTransition = false;
 });
