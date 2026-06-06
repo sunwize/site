@@ -58,6 +58,10 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/blog", "/blog/tags", "/projects"],
+    },
     typescript: {
       tsConfig: {
         compilerOptions: {

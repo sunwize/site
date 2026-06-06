@@ -20,6 +20,7 @@ const isInternalLink = computed(() => href && !external);
       v-if="isInternalLink"
       :to="href as RouteLocationRaw"
       :aria-label="ariaLabel"
+      prefetch-on="interaction"
       class="focus-ring peer block rounded-md"
     >
       <div class="relative overflow-hidden rounded-md border-2 border-black">
