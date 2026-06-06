@@ -5,6 +5,7 @@ const isFallbackVisible = ref(false);
 const size = 180;
 const imageSrc = "/images/portrait.jpg";
 const imageAlt = "Portrait de Colin Clisson";
+let cleanup: (() => void) | null = null;
 
 const vertexShaderSource = `
 precision mediump float;
@@ -213,6 +214,10 @@ function loadTexture(gl: WebGLRenderingContext, src: string) {
   return texture;
 }
 
+onUnmounted(() => {
+  cleanup?.();
+});
+
 onMounted(async () => {
   await nextTick();
 
@@ -383,7 +388,7 @@ onMounted(async () => {
   element.addEventListener("pointerleave", handlePointerLeave);
   animationFrame = requestAnimationFrame(render);
 
-  onUnmounted(() => {
+  cleanup = () => {
     cancelAnimationFrame(animationFrame);
     element.removeEventListener("pointermove", handlePointerMove);
     element.removeEventListener("pointerleave", handlePointerLeave);
@@ -392,7 +397,8 @@ onMounted(async () => {
     gl.deleteBuffer(indexBuffer);
     gl.deleteTexture(texture);
     gl.deleteProgram(program);
-  });
+    cleanup = null;
+  };
 });
 </script>
 
