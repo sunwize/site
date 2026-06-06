@@ -1,7 +1,7 @@
 const VIEW_TRANSITION_UPDATE_TIMEOUT_MS = 1500;
 
 const isViewTransitionSupported = (
-  document: Document,
+  document: Document
 ): document is Document & {
   startViewTransition: (callback: () => Promise<void>) => ViewTransition;
 } => "startViewTransition" in document;
@@ -21,12 +21,44 @@ const isSamePageHashNavigation = (url: URL) =>
   url.search === window.location.search &&
   url.hash !== "";
 
+const isHashOnlyRouteNavigation = (
+  to: ReturnType<typeof useRoute>,
+  from: ReturnType<typeof useRoute>
+) =>
+  to.path === from.path &&
+  to.fullPath !== from.fullPath &&
+  to.hash !== from.hash;
+
+const isHistoryKeyboardShortcut = (event: KeyboardEvent) =>
+  ((event.metaKey || event.altKey) &&
+    (event.key === "ArrowLeft" || event.key === "ArrowRight")) ||
+  (event.metaKey && (event.key === "[" || event.key === "]"));
+
 const wait = (duration: number) =>
   new Promise<void>((resolve) => window.setTimeout(resolve, duration));
+
+const getHistoryPosition = () => {
+  const position = window.history.state?.position;
+  return typeof position === "number" ? position : null;
+};
 
 export default defineNuxtPlugin((nuxtApp) => {
   const router = useRouter();
   let isTransitioning = false;
+  let shouldTransitionHistoryNavigation = false;
+  let lastHistoryPosition = getHistoryPosition();
+
+  const markHistoryNavigation = () => {
+    shouldTransitionHistoryNavigation = true;
+  };
+
+  const waitForPageFinish = () =>
+    new Promise<void>((resolve) => {
+      const removeHook = nuxtApp.hook("page:finish", () => {
+        removeHook();
+        resolve();
+      });
+    });
 
   const runWithViewTransition = (to: string) => {
     if (
@@ -41,15 +73,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     isTransitioning = true;
 
     const transition = document.startViewTransition(async () => {
-      const pageFinished = new Promise<void>((resolve) => {
-        const removeHook = nuxtApp.hook("page:finish", () => {
-          removeHook();
-          resolve();
-        });
-      });
+      const pageFinished = waitForPageFinish();
 
       await router.push(to);
-      await Promise.race([pageFinished, wait(VIEW_TRANSITION_UPDATE_TIMEOUT_MS)]);
+      await Promise.race([
+        pageFinished,
+        wait(VIEW_TRANSITION_UPDATE_TIMEOUT_MS),
+      ]);
       await nextTick();
     });
 
@@ -58,6 +88,74 @@ export default defineNuxtPlugin((nuxtApp) => {
     });
   };
 
+  window.addEventListener("popstate", markHistoryNavigation, { capture: true });
+
+  window.addEventListener(
+    "keydown",
+    (event) => {
+      if (isHistoryKeyboardShortcut(event)) {
+        markHistoryNavigation();
+      }
+    },
+    { capture: true }
+  );
+
+  router.beforeResolve((to, from) => {
+    const currentHistoryPosition = getHistoryPosition();
+    const didHistoryPositionChange =
+      currentHistoryPosition !== null &&
+      lastHistoryPosition !== null &&
+      currentHistoryPosition !== lastHistoryPosition;
+
+    if (!shouldTransitionHistoryNavigation && !didHistoryPositionChange) {
+      return;
+    }
+
+    shouldTransitionHistoryNavigation = false;
+
+    if (
+      isTransitioning ||
+      shouldSkipViewTransition() ||
+      !isViewTransitionSupported(document) ||
+      isHashOnlyRouteNavigation(to, from)
+    ) {
+      return;
+    }
+
+    isTransitioning = true;
+
+    return new Promise<void>((resolveNavigation) => {
+      let didResolveNavigation = false;
+      const resolveNavigationOnce = () => {
+        if (didResolveNavigation) {
+          return;
+        }
+
+        didResolveNavigation = true;
+        resolveNavigation();
+      };
+
+      const transition = document.startViewTransition(async () => {
+        const pageFinished = waitForPageFinish();
+
+        resolveNavigationOnce();
+        await Promise.race([
+          pageFinished,
+          wait(VIEW_TRANSITION_UPDATE_TIMEOUT_MS),
+        ]);
+        await nextTick();
+      });
+
+      transition.finished.finally(() => {
+        isTransitioning = false;
+      });
+    });
+  });
+
+  router.afterEach(() => {
+    lastHistoryPosition = getHistoryPosition();
+  });
+
   document.addEventListener(
     "click",
     (event) => {
@@ -65,9 +163,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         return;
       }
 
-      const anchor = (event.target as Element | null)?.closest<HTMLAnchorElement>(
-        "a[href]",
-      );
+      const anchor = (
+        event.target as Element | null
+      )?.closest<HTMLAnchorElement>("a[href]");
 
       if (
         !anchor ||
@@ -96,6 +194,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       event.preventDefault();
       runWithViewTransition(`${url.pathname}${url.search}${url.hash}`);
     },
-    { capture: true },
+    { capture: true }
   );
 });
