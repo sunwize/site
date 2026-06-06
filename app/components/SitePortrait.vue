@@ -213,7 +213,9 @@ function loadTexture(gl: WebGLRenderingContext, src: string) {
   return texture;
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
+
   const element = canvas.value;
 
   if (!element) {
