@@ -177,7 +177,7 @@ hr {
 }
 
 .prose :where(.code-block pre.shiki code .line) {
-  display: block;
+  display: hidden;
 }
 
 .prose :where(:not(pre) > code) {
