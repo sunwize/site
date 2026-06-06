@@ -10,7 +10,7 @@ const refresh = () => {
 export const useRandomKeyword = () => {
   const router = useRouter();
 
-  const keyword = useState<JsKeyword>("random-js-keyword", () => DEFAULT_KEYWORD);
+  const keyword = useState<JsKeyword>("random-js-keyword", () => refresh());
 
   if (import.meta.client) {
     router.afterEach((to, from) => {
