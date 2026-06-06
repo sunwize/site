@@ -1,5 +1,5 @@
 ---
-title: The future of software development
+title: The future of software engineering
 description: How AI is shifting the way we build software.
 intro: I apologize in advance for my broken English. This is an attempt to express my thoughts and put it on paper.
 pubDate: 2026-06-01
@@ -13,7 +13,7 @@ I think it comes as no surprise to anyone when I say that AI has fundamentally c
 The reality has shifted from _"I have this idea, is it worth spending time building it?"_ to _"Took me 5min to get this mvp, what do I want to do with it?"_.
 The coding time has shrunk so much that the vast majority of ideas can quickly transform into a working prototype in a matter of hours if not minutes.
 So many features that used to be considered too complex/costly to build are now one prompt away.
-In this new landscape, many developers I've talked to are starting to worry about their future in the industry.
+In this new landscape, many developers I've been talking to are starting to worry about their future in the industry.
 
 - _"Will I be able to keep up with the pace of change?"_
 
@@ -32,23 +32,19 @@ I think it's always interesting to look at history and see how things turned out
 And so on...
 
 Until now.
-This change is now happening in software development as well, and it's happening fast.
-Notice how I've been using the term _"software development"_ so far in this article?
-I could have said _"software engineering"_ instead, like many people do.
-This is because it's the point I'm trying to make:
+This change is now happening in software engineering as well, and it's happening fast.
+But here is the thing:
 
 <p class="text-center italic font-bold text-black">"Software engineering has never been about writing code."</p>
 
-From the very beginning, this industry has never been about writing code.
-It used to be one of the most time consuming parts of the job, sure...
-Some of us used to identify as _"coders"_ or _"developers"_, I guess...
-But it was never what engineering was about.
+Coding used to be one of the most time consuming parts of the job.
+Some of us even used to identify as _"coders"_ or _"developers"_, but it was never what engineering was about.
 
 If we look at the etymology of the word, **Engineering** is about solving problems, which means that software engineering is about solving problems with software.
 However, _solving problems_ != _writing code_.
 The solving part requires architectural thinking, plannification, and a deep understanding of the business requirements.
 It's a subtle mix of critical thinking, creativity, and technical expertise.
-It takes a whole different skillset than simply being good at writing code.
+Coding is simply the tool we use to translate these decisions into reality.
 
 This is how AI made me realize that coding has never been my favorite part of the job.
 In fact, the main reason I got into this industry in the first place was to **build stuff**;
