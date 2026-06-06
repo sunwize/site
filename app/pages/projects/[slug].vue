@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { formatPostDate } from "~/utils/content";
+import { SITE_TITLE, SITE_URL } from "~/utils/site";
 import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
@@ -7,6 +8,7 @@ const slug = route.params.slug;
 const path = `/projects/${Array.isArray(slug) ? slug.join("/") : slug}`;
 const viewTransitionName = (part: string) =>
   toViewTransitionName("projects", path, part);
+const canonicalUrl = `${SITE_URL.replace(/\/$/, "")}${path}`;
 
 const { data: project } = await useAsyncData(`project-${path}`, () =>
   queryCollection("projects").path(path).first()
@@ -24,6 +26,61 @@ useSeoMeta({
     project.value ? `${project.value.title} | Projects` : "Project",
   description: () => project.value?.description ?? undefined,
   robots: () => (project.value?.draft ? "noindex, nofollow" : undefined),
+  ogTitle: () => project.value?.title ?? SITE_TITLE,
+  ogDescription: () => project.value?.description ?? undefined,
+  ogType: "article",
+  ogUrl: canonicalUrl,
+  ogImage: () =>
+    project.value?.thumbnail
+      ? `${SITE_URL.replace(/\/$/, "")}${project.value.thumbnail}`
+      : undefined,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => project.value?.title ?? SITE_TITLE,
+  twitterDescription: () => project.value?.description ?? undefined,
+  twitterImage: () =>
+    project.value?.thumbnail
+      ? `${SITE_URL.replace(/\/$/, "")}${project.value.thumbnail}`
+      : undefined,
+});
+
+useHead({
+  link: [{ rel: "canonical", href: canonicalUrl }],
+  meta: [
+    { property: "article:published_time", content: project.value.pubDate },
+    ...(project.value.updatedDate
+      ? [
+          {
+            property: "article:modified_time",
+            content: project.value.updatedDate,
+          },
+        ]
+      : []),
+    ...(project.value.tags ?? []).map((tag) => ({
+      property: "article:tag",
+      content: tag,
+    })),
+  ],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        name: project.value.title,
+        description: project.value.description,
+        datePublished: project.value.pubDate,
+        dateModified: project.value.updatedDate ?? project.value.pubDate,
+        url: canonicalUrl,
+        image: `${SITE_URL.replace(/\/$/, "")}${project.value.thumbnail}`,
+        author: {
+          "@type": "Person",
+          name: SITE_TITLE,
+          url: SITE_URL,
+        },
+        sameAs: [project.value.projectUrl, project.value.repoUrl].filter(Boolean),
+      }),
+    },
+  ],
 });
 </script>
 

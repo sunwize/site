@@ -12,6 +12,9 @@ const previewImage = siteUrl
   : SITE_PREVIEW_IMAGE;
 
 useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
   link: [
     {
       rel: "preload",
@@ -35,11 +38,16 @@ useSeoMeta({
   description: SITE_DESCRIPTION,
   ogTitle: SITE_TITLE,
   ogDescription: SITE_DESCRIPTION,
+  ogType: "website",
+  ogUrl: siteUrl,
+  ogSiteName: SITE_TITLE,
   ogImage: previewImage,
   ogImageWidth: 1254,
   ogImageHeight: 1254,
   ogImageType: "image/jpeg",
   twitterCard: "summary_large_image",
+  twitterTitle: SITE_TITLE,
+  twitterDescription: SITE_DESCRIPTION,
   twitterImage: previewImage,
 });
 </script>

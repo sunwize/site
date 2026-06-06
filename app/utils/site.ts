@@ -1,5 +1,6 @@
 export const SITE_TITLE = "Colin Clisson";
-export const SITE_DESCRIPTION = "Personal website";
+export const SITE_DESCRIPTION =
+  "I'm a software engineer based in Montreal and working at Ivado Labs, where I help our clients leverage AI to improve their business.";
 export const SITE_LOCATION = "Montréal, QC";
 export const SITE_URL = "https://colinclisson.com";
 export const SITE_PREVIEW_IMAGE = "/images/banner.jpg";

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { formatPostDate } from "~/utils/content";
+import { SITE_PREVIEW_IMAGE, SITE_TITLE, SITE_URL } from "~/utils/site";
 import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const route = useRoute();
@@ -14,6 +15,8 @@ const titleViewTransitionName = computed(() =>
     : viewTransitionName("title")
 );
 const titleElement = useTemplateRef("titleElement");
+const canonicalUrl = `${SITE_URL.replace(/\/$/, "")}${path}`;
+const previewImage = `${SITE_URL.replace(/\/$/, "")}${SITE_PREVIEW_IMAGE}`;
 
 const selectTag = (tag: string) => {
   const transitionName = toViewTransitionName("blog", "tag", tag, "title");
@@ -36,6 +39,49 @@ useSeoMeta({
   title: () => (post.value ? `${post.value.title} | Blog` : "Article"),
   description: () => post.value?.description ?? undefined,
   robots: () => (post.value?.draft ? "noindex, nofollow" : undefined),
+  ogTitle: () => post.value?.title ?? SITE_TITLE,
+  ogDescription: () => post.value?.description ?? undefined,
+  ogType: "article",
+  ogUrl: canonicalUrl,
+  ogImage: previewImage,
+  twitterCard: "summary_large_image",
+  twitterTitle: () => post.value?.title ?? SITE_TITLE,
+  twitterDescription: () => post.value?.description ?? undefined,
+  twitterImage: previewImage,
+});
+
+useHead({
+  link: [{ rel: "canonical", href: canonicalUrl }],
+  meta: [
+    { property: "article:published_time", content: post.value.pubDate },
+    ...(post.value.updatedDate
+      ? [{ property: "article:modified_time", content: post.value.updatedDate }]
+      : []),
+    ...(post.value.tags ?? []).map((tag) => ({
+      property: "article:tag",
+      content: tag,
+    })),
+  ],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.value.title,
+        description: post.value.description,
+        datePublished: post.value.pubDate,
+        dateModified: post.value.updatedDate ?? post.value.pubDate,
+        mainEntityOfPage: canonicalUrl,
+        image: previewImage,
+        author: {
+          "@type": "Person",
+          name: SITE_TITLE,
+          url: SITE_URL,
+        },
+      }),
+    },
+  ],
 });
 </script>
 
