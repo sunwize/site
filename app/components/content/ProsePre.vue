@@ -10,18 +10,12 @@ const props = withDefaults(
   }>(),
   {
     code: "",
-    language: undefined,
-    filename: undefined,
     highlights: () => [],
-    meta: undefined,
-    class: undefined,
   }
 );
 
 const copied = ref(false);
 let resetCopiedTimer: ReturnType<typeof setTimeout> | undefined;
-
-const label = computed(() => props.filename ?? props.language);
 
 async function copyCode() {
   if (!props.code || import.meta.server) {
@@ -49,21 +43,21 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="code-block">
-    <div v-if="label || code" class="code-block__header">
-      <span v-if="label" class="code-block__label">{{ label }}</span>
-      <span v-else aria-hidden="true" />
-
-      <button
-        v-if="code"
-        class="code-block__copy"
-        type="button"
-        :aria-label="copied ? 'Copied code' : 'Copy code'"
-        :title="copied ? 'Copied' : 'Copy'"
-        @click="copyCode"
-      >
-        {{ copied ? "Copied" : "Copy" }}
-      </button>
-    </div>
+    <button
+      v-if="code"
+      class="code-block__copy"
+      :class="{ 'is-visible': copied }"
+      type="button"
+      :aria-label="copied ? 'Copied code' : 'Copy code'"
+      :title="copied ? 'Copied' : 'Copy'"
+      @click="copyCode"
+    >
+      <Icon
+        :name="copied ? 'lucide:check' : 'lucide:copy'"
+        class="size-4"
+        aria-hidden="true"
+      />
+    </button>
 
     <pre :class="props.class"><slot /></pre>
   </div>
