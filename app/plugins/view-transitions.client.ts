@@ -21,6 +21,11 @@ const isSamePageHashNavigation = (url: URL) =>
   url.search === window.location.search &&
   url.hash !== "";
 
+const isCurrentPageNavigation = (url: URL) =>
+  url.pathname === window.location.pathname &&
+  url.search === window.location.search &&
+  url.hash === window.location.hash;
+
 const isHashOnlyRouteNavigation = (
   to: ReturnType<typeof useRoute>,
   from: ReturnType<typeof useRoute>
@@ -171,6 +176,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       if (
         url.origin !== window.location.origin ||
+        isCurrentPageNavigation(url) ||
         isSamePageHashNavigation(url)
       ) {
         return;
