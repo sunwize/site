@@ -9,9 +9,16 @@ draft: false
 ---
 
 It would be an understatement to say that writing TypeScript at scale is hard.
-It's always been a challenge to ship code into a huge codebase with confidence.
+It's always been a challenge to ship code into a huge codebase with confidence, especially when you're working on a large team.
+That's partly why we have developed processes and tools to help us test and validate our code during QA and review before it's deployed.
+But with the rise of AI agents and how fast they can generate code, the need for stronger safeguards at the coding level is becoming increasingly important.
+We need to find ways to strengthen the feedback loops directly within the development process so we can catch errors and regressions early on.
+
 This is where [**Effect**](https://effect.website) comes in.
-To illustrate the problems and how Effect solves them, let's look at a few examples.
+Effect is a library (some may even say a language) that helps you write TypeScript code that is both type-safe and composable.
+It's a way to write code that is easy to understand, easy to test, and easy to maintain.
+
+This might all sound very abstract, so let's look at a few examples to illustrate the problems and how Effect solves them.
 
 ## Error typing
 
