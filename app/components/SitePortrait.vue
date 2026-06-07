@@ -30,11 +30,11 @@ void main() {
     );
 
     float distanceToMouse = length(position - mousePosition);
-    float radiusFalloff = 1.0 - smoothstep(0.45, 1.0, distanceToMouse);
+    float radiusFalloff = 1.0 - smoothstep(0.6, 1.25, distanceToMouse);
     float edgeDistanceX = min(abs(position.x), 1.0 - abs(position.x));
     float edgeDistanceY = min(abs(position.y), 1.0 - abs(position.y));
     float edgeFalloff = smoothstep(0.04, 0.18, min(edgeDistanceX, edgeDistanceY));
-    float influence = 0.035 * radiusFalloff * edgeFalloff * u_mouseActivation;
+    float influence = 0.01 * radiusFalloff * edgeFalloff * u_mouseActivation;
 
     if (influence > 0.001) {
       vec2 pushDirection = distanceToMouse > 0.01
@@ -103,7 +103,7 @@ void main() {
   vec2 mousePixel = u_laggedMouse * u_resolution;
   float mouseDistance = length(dotCenter - mousePixel);
   float velocity = length(u_mouseVelocity);
-  float influenceRadius = 135.0 + velocity * 18.0;
+  float influenceRadius = 165.0 + velocity * 14.0;
   float mouseInfluence = 0.0;
 
   if (u_mouseActive > 0.5 && mouseDistance < influenceRadius) {
