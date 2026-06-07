@@ -1,10 +1,9 @@
 ---
 title: Writing TypeScript at scale
 description: How to write TypeScript at scale.
-pubDate: 2026-06-06
+pubDate: 2026-05-14
 tags:
   - typescript
-  - engineering
 draft: false
 ---
 

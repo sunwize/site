@@ -5,6 +5,7 @@ import { toViewTransitionName } from "~/utils/viewTransitions";
 
 defineProps<{
   post: BlogPostPreview;
+  activeTag?: string;
 }>();
 
 const viewTransitionNameForPost = (post: BlogPostPreview, part: string) =>
@@ -40,7 +41,13 @@ const viewTransitionNameForPost = (post: BlogPostPreview, part: string) =>
     </p>
 
     <template v-if="post.tags?.length" #overlay>
-      <TagRow :tags="post.tags" class="absolute bottom-2 right-2 z-10" />
+      <TagRow
+        v-if="activeTag"
+        :tags="post.tags"
+        :highlight="activeTag"
+        class="absolute bottom-2 right-2 z-10"
+      />
+      <TagRow v-else :tags="post.tags" class="absolute bottom-2 right-2 z-10" />
     </template>
   </PatternCard>
 </template>

@@ -35,7 +35,7 @@ useSeoMeta({
     <div class="text-black">
       <ul class="flex flex-col items-start gap-y-5">
         <li v-for="post in posts" :key="post.href" class="w-full max-w-96">
-          <BlogPostCard :post="post" />
+          <BlogPostCard :post="post" :active-tag="tag" />
         </li>
       </ul>
     </div>

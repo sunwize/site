@@ -5,7 +5,6 @@ intro: I apologize in advance for my broken English. This is an attempt to expre
 pubDate: 2026-01-21
 tags:
   - ai
-  - engineering
 draft: false
 ---
 
