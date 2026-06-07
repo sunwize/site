@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { MAIN_NAV_LINKS, SITE_TITLE, SOCIAL_LINKS } from "~/utils/site";
-
-const { keyword } = useRandomKeyword();
 </script>
 
 <template>
@@ -14,7 +12,6 @@ const { keyword } = useRandomKeyword();
     <NuxtLink to="/" class="focus-ring">
       <span class="block text-2xl font-bold">{{ SITE_TITLE }}</span>
     </NuxtLink>
-    <p class="text-center italic">{{ keyword }}</p>
     <div class="py-2" />
     <HeaderInternalLink
       v-for="link in MAIN_NAV_LINKS"

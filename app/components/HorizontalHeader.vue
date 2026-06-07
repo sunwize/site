@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { MAIN_NAV_LINKS, SITE_TITLE, SOCIAL_LINKS } from "~/utils/site";
-
-const { keyword } = useRandomKeyword();
 </script>
 
 <template>
@@ -9,9 +7,10 @@ const { keyword } = useRandomKeyword();
     <div class="flex flex-row justify-between">
       <div class="flex flex-col items-start">
         <NuxtLink to="/" class="focus-ring">
-          <span class="block min-w-max text-2xl font-bold">{{ SITE_TITLE }}</span>
+          <span class="block min-w-max text-2xl font-bold">{{
+            SITE_TITLE
+          }}</span>
         </NuxtLink>
-        <p class="text-center italic">{{ keyword }}</p>
       </div>
       <div class="flex w-full flex-wrap justify-end text-right">
         <div class="flex w-full justify-end gap-x-2">
