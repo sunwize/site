@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import {
-  sortByPubDateDesc,
-  toBlogPostPreview,
-  toProjectPreview,
-} from "~/utils/content";
+import { sortByPubDateDesc, toBlogPostPreview, toProjectPreview } from "~/utils/content";
+import { EXPERIENCE_ITEMS } from "~/utils/site";
 
 const { data: recentPosts } = await useAsyncData(
   "home-recent-posts",
@@ -44,6 +41,19 @@ const { data: recentProjects } = await useAsyncData(
         I'm not watching from the bench.
         <strong>I'm in the game.</strong>
       </p>
+
+      <h2>Experience</h2>
+      <div class="not-prose text-black">
+        <ol class="flex flex-col items-start gap-y-5">
+          <li
+            v-for="experience in EXPERIENCE_ITEMS"
+            :key="experience.company"
+            class="w-full max-w-2xl"
+          >
+            <ExperienceCard :experience="experience" />
+          </li>
+        </ol>
+      </div>
 
       <h2>Recent Posts</h2>
       <div class="not-prose text-black">

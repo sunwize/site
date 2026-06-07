@@ -5,6 +5,7 @@ const props = defineProps<{
   tags?: ReadonlyArray<string>;
   highlight?: string | undefined;
   tagViewTransitions?: boolean;
+  disabled?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -21,14 +22,20 @@ const viewTransitionNameForTag = (tag: string) =>
       v-for="tag in props.tags"
       :key="tag"
       :label="tag"
-      :href="`/blog/tags/${tag}`"
-      :active="highlight === tag"
+      v-bind="
+        props.disabled
+          ? {}
+          : {
+              href: `/blog/tags/${tag}`,
+              active: highlight === tag,
+            }
+      "
       :style="
         props.tagViewTransitions === false
           ? undefined
           : { viewTransitionName: viewTransitionNameForTag(tag) }
       "
-      @click="emit('select', tag)"
+      @click="props.disabled ? undefined : emit('select', tag)"
     />
   </div>
 </template>
