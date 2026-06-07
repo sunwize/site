@@ -100,12 +100,14 @@ useHead({
       </div>
     </div>
 
-    <h1
-      class="text-4xl font-bold"
-      :style="{ viewTransitionName: viewTransitionName('title') }"
-    >
-      {{ project.title }}
-    </h1>
+    <PageBreadcrumbs
+      :items="[
+        { href: '/', label: 'Home' },
+        { href: '/projects', label: 'Projects' },
+      ]"
+      :current="project.title"
+      :current-style="{ viewTransitionName: viewTransitionName('title') }"
+    />
     <div class="py-1" />
     <time :datetime="project.pubDate">
       {{ formatPostDate(project.pubDate) }}

@@ -21,9 +21,15 @@ useSeoMeta({
 
 <template>
   <section>
-    <h1 class="text-4xl font-bold" :style="{ viewTransitionName }">
-      Blog - {{ tag }}
-    </h1>
+    <PageBreadcrumbs
+      :items="[
+        { href: '/', label: 'Home' },
+        { href: '/blog', label: 'Blog' },
+        { href: '/blog/tags', label: 'Tags' },
+      ]"
+      :current="tag"
+      :current-style="{ viewTransitionName }"
+    />
     <div class="py-1"></div>
     <NuxtLink
       to="/blog/tags"

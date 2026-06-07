@@ -21,7 +21,7 @@ const previewImage = `${SITE_URL.replace(/\/$/, "")}${SITE_PREVIEW_IMAGE}`;
 const selectTag = (tag: string) => {
   const transitionName = toViewTransitionName("blog", "tag", tag, "title");
   selectedTag.value = tag;
-  titleElement.value?.style.setProperty("view-transition-name", transitionName);
+  titleElement.value?.style?.setProperty("view-transition-name", transitionName);
 };
 
 const { data: post } = await useAsyncData(`blog-${path}`, () =>
@@ -101,13 +101,15 @@ useHead({
       </div>
     </div>
 
-    <h1
+    <PageBreadcrumbs
       ref="titleElement"
-      class="text-4xl font-bold"
-      :style="{ viewTransitionName: titleViewTransitionName }"
-    >
-      {{ post.title }}
-    </h1>
+      :items="[
+        { href: '/', label: 'Home' },
+        { href: '/blog', label: 'Blog' },
+      ]"
+      :current="post.title"
+      :current-style="{ viewTransitionName: titleViewTransitionName }"
+    />
     <div class="py-1" />
     <time
       :datetime="post.pubDate"

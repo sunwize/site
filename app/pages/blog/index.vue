@@ -16,7 +16,7 @@ useSeoMeta({
 
 <template>
   <section>
-    <h1 class="text-4xl font-bold">Blog</h1>
+    <PageBreadcrumbs :items="[{ href: '/', label: 'Home' }]" current="Blog" />
     <div class="py-1"></div>
     <NuxtLink
       to="/blog/tags"

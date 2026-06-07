@@ -16,7 +16,10 @@ useSeoMeta({
 
 <template>
   <section>
-    <h1 class="text-4xl font-bold">Projects</h1>
+    <PageBreadcrumbs
+      :items="[{ href: '/', label: 'Home' }]"
+      current="Projects"
+    />
     <hr />
     <h2 class="sr-only">All projects</h2>
     <div class="text-black">
