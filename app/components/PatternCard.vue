@@ -57,7 +57,7 @@ const isInternalLink = computed(() => href && !external);
       </div>
     </div>
     <div
-      class="absolute left-[0.5em] top-[0.5em] -z-10 h-full w-full rounded-md bg-hatch transition-[top] duration-300 peer-hover:top-[-0.5em]"
+      class="absolute left-[0.5em] top-[0.5em] -z-10 h-full w-full rounded-md bg-hatch transition-all duration-300 peer-hover:left-[0.75em] peer-hover:top-[0.75em]"
       aria-hidden="true"
     />
     <slot name="overlay" />
