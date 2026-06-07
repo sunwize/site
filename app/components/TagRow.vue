@@ -3,7 +3,7 @@ import { toViewTransitionName } from "~/utils/viewTransitions";
 
 const props = defineProps<{
   tags?: ReadonlyArray<string>;
-  highlight?: string;
+  highlight?: string | undefined;
   tagViewTransitions?: boolean;
 }>();
 

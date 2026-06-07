@@ -2,7 +2,7 @@
 title: My AI workflow
 description: How I use AI to build software.
 intro: "Note to myself: This is supposed to be a living document. I should update it regularly."
-pubDate: 2026-06-05
+pubDate: 2026-03-05
 tags:
   - ai
 draft: false
