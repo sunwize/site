@@ -215,7 +215,7 @@ You know what the program needs, what it can fail with, and what it produces, al
 ## Effect in the world of AI Agents
 
 Effect has been around for a while now, but it used to be very costly to adopt.
-The weird and verbose syntax, the mental model, and the lacking of learning materials made it very hard to jump in.
+The weird and verbose syntax, the mental model, and the lack of learning materials made it very hard to jump in.
 But now, with the extensive usage of AI agents in programming, it's become trivial to develop effectful solutions.
 Given the right tools and harnesses, most models are now capable of generating good Effect code.
 I'd recommend looking at the official [Effect Solutions](https://effect.solutions) to learn how to setup your agentic environment so it's optimized for Effect.
