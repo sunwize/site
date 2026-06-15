@@ -3,6 +3,7 @@ const canvas = useTemplateRef<HTMLCanvasElement>("canvas");
 const isFallbackVisible = ref(false);
 
 const size = 180;
+const renderScale = 4;
 const imageSrc = "/images/portrait.jpg";
 const imageAlt = "Portrait de Colin Clisson";
 let cleanup: (() => void) | null = null;
@@ -243,9 +244,9 @@ onMounted(async () => {
     return;
   }
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 2) * 2;
-  element.width = size * dpr;
-  element.height = size * dpr;
+  // Keep the shader grid and supersampling identical across display densities.
+  element.width = size * renderScale;
+  element.height = size * renderScale;
 
   const program = createProgram(gl);
   const texture = loadTexture(gl, imageSrc);
