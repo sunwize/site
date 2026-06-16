@@ -14,21 +14,21 @@ AgentX is a desktop application that lets you orchestrate coding agents with per
 It's an internal tool I built because I was tired of working in terminals.
 I never thought TUIs were the best way to work with coding agents.
 UIs have always been more efficient at managing complex workflows and state.
-This incentive started with a simple frustration: I wanted a harness that would let me work with different AI providers, all in one place.
+This project started with a simple frustration: I wanted a harness that would let me work with different AI providers, all in one place.
 This was back when the Codex app was still rough around the edges, and Cursor Glass hadn't even been imagined yet.
 The goal was not to replace a terminal or an editor.
 I just wanted a central control panel for my agents: choose a workspace, start a thread, pick a model, set the runtime safety mode, watch the agent's activity, approve sensitive actions, and keep the history around after the turn finishes.
 
 ## The Problem
 
-When I started looking at coding agents implementation details, I quickly realized that they've clearly never talked to each other.
+When I started looking at coding agent implementation details, I quickly realized that the providers clearly had not been designed to talk to each other.
 Nothing was standardized.
 Each provider had its own way of doing things.
 Message structures were different, tool calls were different, approval processes were different, etc.
 
-So the first massive problem I faced was to create an abstraction layer that would let different providers be compatible with each other.
+So the first major problem I faced was creating an abstraction layer that would let different providers be compatible with each other.
 Because despite [OpenAI's Codex App Server](https://developers.openai.com/codex/app-server) and [Anthropic's Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview), there was still a lot of work to be done to make Claude and GPT models _"speak the same language"_.
-Today, it has become trivial to do so thanks to things like [Pi Coding Agent](https://pi.dev), but at the time, it was really unknown territory.
+Today, it has become trivial to do so thanks to things like [Pi Coding Agent](https://pi.dev), but at the time, it was still unknown territory.
 
 I built the abstraction layer with Effect by treating each AI provider as a service with the same basic responsibilities.
 Instead of letting the rest of the app talk directly to OpenAI, Anthropic, or any other runtime, I defined one shared `Provider` interface for things like listing models, authenticating, starting a turn, streaming events, interrupting work, and answering approval requests.
@@ -78,7 +78,7 @@ From a user's perspective, the workflow is straightforward: create or select a w
 
 The most interesting technical part of AgentX is the runtime manager.
 
-AgentX keeps a local model of the agent lifecycle and adapts provider events into that model. A local thread can have one or more agent sessions. Each session records the provider, provider thread id, model, reasoning effort, sandbox mode, approval policy, status, and any handoff source session. Turns and tool items are stored separately so the UI can reconstruct the conversation and activity timeline from SQLite.
+AgentX keeps a local model of the agent lifecycle and adapts provider events into that model. A local thread can have one or more agent sessions. Each session records the provider, provider thread ID, model, reasoning effort, sandbox mode, approval policy, status, and any handoff source session. Turns and tool items are stored separately so the UI can reconstruct the conversation and activity timeline from SQLite.
 
 When a user sends a turn, the runtime manager resolves the workspace, creates or reuses the local thread, chooses the provider for the selected model, creates or updates the session snapshot, records the new turn, checks authentication, and then starts or resumes the provider thread.
 
@@ -106,5 +106,5 @@ I liked this architecture because it keeps the agent runtime explicit. The provi
 AgentX was useful because it forced me to think about agent UX as a systems problem, not just a chat problem.
 It includes desktop application development, local persistence, typed RPC, provider abstraction, streaming event handling, authentication handoff, approval workflows, thread resumption, runtime safety controls, and a UI for making all of this understandable.
 It also reflects the kind of agent tooling I want to use myself: local-first, workspace-aware, inspectable, and direct about what the runtime is allowed to do.
-It's part of the reasons why I now use the Codex app and Cursor Glass in my day-to-day workflow.
-I believe these tools are the best way to orchestrate coding agents to this day.
+It's one of the reasons why I now use the Codex app and Cursor Glass in my day-to-day workflow.
+I believe these tools are among the best ways to orchestrate coding agents.
