@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { sortByPubDateDesc, toBlogPostPreview, toProjectPreview } from "~/utils/content";
+import {
+  sortByPubDateDesc,
+  toBlogPostPreview,
+  toProjectPreview,
+} from "~/utils/content";
 import { EXPERIENCE_ITEMS } from "~/utils/site";
 
 const { data: recentPosts } = await useAsyncData(
@@ -39,7 +43,7 @@ const { data: recentProjects } = await useAsyncData(
         part of it. Today, I'm lucky enough to live in the AI era, which is
         arguably an even bigger revolution. But this time, things are different.
         I'm not watching from the bench.
-        <strong>I'm in the game.</strong>
+        <strong>I can play the game.</strong>
       </p>
 
       <h2>Experience</h2>
