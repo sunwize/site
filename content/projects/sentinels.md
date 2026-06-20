@@ -1,6 +1,6 @@
 ---
 title: Sentinels
-description: A tiny always-on-top macOS overlay for tracking active Codex and Cursor coding agents.
+description: A tiny always-on-top macOS overlay for tracking active coding agents.
 thumbnail: /projects/sentinels-cover.webp
 pubDate: 2026-06-20
 draft: false
