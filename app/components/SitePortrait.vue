@@ -31,17 +31,21 @@ void main() {
     );
 
     float distanceToMouse = length(position - mousePosition);
-    float radiusFalloff = 1.0 - smoothstep(0.6, 1.25, distanceToMouse);
+    float displacementRadius = 1.0;
+    float displacementStrength = 0.03;
+    float influence = 0.5 / (1.0 + distanceToMouse * distanceToMouse * 2.0);
+    float radiusFalloff = 1.0 - smoothstep(displacementRadius * 0.6, displacementRadius, distanceToMouse);
     float edgeDistanceX = min(abs(position.x), 1.0 - abs(position.x));
     float edgeDistanceY = min(abs(position.y), 1.0 - abs(position.y));
-    float edgeFalloff = smoothstep(0.04, 0.18, min(edgeDistanceX, edgeDistanceY));
-    float influence = 0.01 * radiusFalloff * edgeFalloff * u_mouseActivation;
+    float edgeDistance = min(edgeDistanceX, edgeDistanceY);
+    float edgeFalloff = edgeDistance > 0.05 ? smoothstep(0.05, 0.2, edgeDistance) : 0.0;
+    influence = influence * displacementStrength * radiusFalloff * edgeFalloff * u_mouseActivation;
 
     if (influence > 0.001) {
       vec2 pushDirection = distanceToMouse > 0.01
         ? normalize(position - mousePosition)
         : vec2(0.0);
-      float pulse = sin(u_time * 3.0 + distanceToMouse * 9.0) * 0.1 + 1.0;
+      float pulse = sin(u_time * 3.0 + distanceToMouse * 10.0) * 0.1 + 1.0;
       position += pushDirection * influence * pulse;
     }
   }
@@ -104,20 +108,30 @@ void main() {
   vec2 mousePixel = u_laggedMouse * u_resolution;
   float mouseDistance = length(dotCenter - mousePixel);
   float velocity = length(u_mouseVelocity);
-  float influenceRadius = 165.0 + velocity * 14.0;
+  float baseRadius = 400.0;
+  float velocityRadius = velocity * 20.0;
+  float influenceRadius = baseRadius + velocityRadius;
   float mouseInfluence = 0.0;
 
   if (u_mouseActive > 0.5 && mouseDistance < influenceRadius) {
-    mouseInfluence = 1.0 - mouseDistance / influenceRadius;
+    mouseInfluence = 0.75 - mouseDistance / influenceRadius;
   }
 
+  float mouseHideNoise = random(gridCoord + vec2(9.87, 6.54));
   float recoverySeed = random(gridCoord + vec2(2.34, 7.89));
-  float recovery = sin(u_time / (0.18 + recoverySeed * 0.85) + recoverySeed * 6.28) * 0.5 + 0.5;
-  float mouseFade = 1.0 - smoothstep(0.0, 1.0, mouseInfluence * 1.35 * (1.0 - recovery * 0.45));
+  float recoveryTime = 0.1 + recoverySeed * 1.0;
+  float recovery = sin(u_time / recoveryTime + recoverySeed * 6.28) * 0.5 + 0.5;
+  float mouseFade = 1.0;
 
-  if (random(gridCoord + vec2(9.87, 6.54)) < 0.58) {
-    circle *= mouseFade;
+  if (mouseHideNoise < 0.5) {
+    float sizeFactor = baseDotSize / dotSize;
+    float fadeDuration = 0.5 + sizeFactor * 1.0;
+    float fadeSpeed = mouseInfluence * 3.0;
+    float fadeProgress = clamp(fadeSpeed - recovery * 2.0, 0.0, 1.0);
+    mouseFade = 1.0 - smoothstep(0.0, fadeDuration, fadeProgress * fadeDuration);
   }
+
+  circle *= mouseFade;
 
   float sizeDelay = baseDotSize / dotSize * 1.15;
   float randomDelay = random(gridCoord + vec2(456.78, 901.23)) * 0.75;
