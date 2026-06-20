@@ -4,10 +4,6 @@ description: A tiny always-on-top macOS overlay for tracking active coding agent
 thumbnail: /projects/sentinels-cover.webp
 pubDate: 2026-06-20
 draft: false
-tags:
-  - Swift
-  - macOS
-  - AI
 ---
 
 Sentinels is a tiny always-on-top macOS overlay I built to keep track of my coding agents.

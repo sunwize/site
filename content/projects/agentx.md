@@ -4,10 +4,6 @@ description: A local desktop workspace for running coding agents with persistent
 thumbnail: /projects/agentx-cover.webp
 pubDate: 2026-02-25
 draft: false
-tags:
-  - Electron
-  - Vue
-  - AI
 ---
 
 AgentX is a desktop application that lets you orchestrate coding agents with persistent threads, runtime controls, and approval-aware tool activity.
