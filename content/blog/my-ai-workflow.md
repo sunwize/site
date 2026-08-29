@@ -3,6 +3,7 @@ title: My AI workflow
 description: How I use AI to build software.
 intro: "Note to myself: This is supposed to be a living document. I should update it regularly."
 pubDate: 2026-03-05
+updatedDate: 2026-08-29
 tags:
   - ai
 draft: false
@@ -15,6 +16,18 @@ It's like having the best car engine out there, without the right chassis, wheel
 In my journey using AI, I've used many tools and experienced many workflows.
 I've learned a lot from each of them and made a lot of rookie mistakes.
 I think now is the time to share my findings.
+
+## One harness
+
+I used to bounce between Cursor Glass, the Codex app, and Claude Code as separate products.
+I now run all of them from one place: [T3 Code](https://t3.codes).
+It's a centralized harness that can drive Codex, Cursor, and Claude Code from a single interface.
+
+What I like most is the inbox-style sidebar.
+Active threads sit at the top as cards, so I can see everything that's still in flight.
+When a thread is done, I settle it and it drops into a collapsed Settled section.
+Threads can also auto-settle after inactivity, or when a linked PR merges.
+That makes it easy to keep many agents running in parallel without losing track of the ongoing work.
 
 ## Start with planning
 
@@ -69,8 +82,7 @@ This is how I'm able to ship code with confidence: gradually building on top of 
 
 ### Agents
 
-- Cursor (mainly Cursor Glass)
-- Codex App
+- [T3 Code](https://t3.codes) as the central harness for Codex, Cursor, and Claude Code
 
 ### Models
 
