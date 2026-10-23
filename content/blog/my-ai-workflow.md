@@ -53,13 +53,14 @@ This enables me to iterate much more efficiently and get to the desired solution
 
 ## Complex tasks
 
-For bigger or trickier tasks, I reach for [pstack](https://github.com/backnotprop/pstack) by Lauren Tan.
-It's an open-source collection of agent skills built around a router skill, `/poteto-mode`, which picks the right workflow for the task at hand.
-On top of that, it ships skills like `/architect` to explore several designs in parallel before writing code, `/arena` to have multiple models attempt the same task and keep the best result, and `/interrogate` for adversarial multi-model reviews.
-It also lets me assign a model to each role, so the heavy thinking and the grunt work don't have to run on the same model.
-That's where it pairs especially well with T3 Code's orchestration capabilities: T3 Code can spin up subagents from a different provider than the main agent.
-For instance, I can have the main thread running on Claude while it delegates work to GPT subagents.
-It's overkill for everyday changes, but it shines when the stakes are high.
+Some tasks are too big or too risky to handle with a simple conversation.
+For those, I use [pstack](https://github.com/backnotprop/pstack), a collection of skills by Lauren Tan.
+It adds a lot more rigor to the process: the agent explores several designs before writing any code, and can even have multiple models challenge each other's work.
+It's overkill for everyday changes, but it gives me a lot more confidence when the stakes are high.
+
+It works especially well with T3 Code, because it can spin up subagents from a different provider than the main one.
+In practice, I can have the main thread running on Claude while it delegates the work to GPT subagents.
+I get the best of both worlds without having to juggle between tools.
 
 ## Test
 
