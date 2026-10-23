@@ -96,6 +96,6 @@ This is how I'm able to ship code with confidence: gradually building on top of 
 
 ### Models
 
-- `GPT-5.5 Low/Medium` for everyday tasks
-- `Composer 2.5 Fast` because it's underrated
-- `Opus 4.8 High` for UI stuff
+Whatever the latest state-of-the-art model is this week.
+I used to list them here, but a new one comes out every time I hit save, and I've given up trying to keep up.
+Just assume I'm using the shiny new one.
