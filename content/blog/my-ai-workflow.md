@@ -86,9 +86,6 @@ This is how I'm able to ship code with confidence: gradually building on top of 
 
 - [pstack](https://github.com/backnotprop/pstack) by Lauren Tan for complex tasks
 - A custom-made code review skill
-- [`/frontend-design`](https://www.skills.sh/anthropics/skills/frontend-design) from Anthropic
-- `/local-commit` to generate commit messages
-- `/pr-description` to write pull request descriptions
 
 ### Agents
 
