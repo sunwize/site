@@ -3,7 +3,7 @@ title: My AI workflow
 description: How I use AI to build software.
 intro: "Note to myself: This is supposed to be a living document. I should update it regularly."
 pubDate: 2026-03-05
-updatedDate: 2026-08-29
+updatedDate: 2026-10-23
 tags:
   - ai
 draft: false
@@ -51,6 +51,16 @@ In practice, that means a single feature can include database, API, and UI chang
 The idea behind this way of working is twofold: I get my hands on something I can QA very early on, and it significantly reduces the overhead of the reviewing process, because the changes are all scoped to a single feature.
 This enables me to iterate much more efficiently and get to the desired solution much faster.
 
+## Complex tasks
+
+For bigger or trickier tasks, I reach for [pstack](https://cursor.com/lp-team/lauren) by Lauren Tan.
+It's an open-source collection of agent skills built around a router skill, `/poteto-mode`, which picks the right workflow for the task at hand.
+On top of that, it ships skills like `/architect` to explore several designs in parallel before writing code, `/arena` to have multiple models attempt the same task and keep the best result, and `/interrogate` for adversarial multi-model reviews.
+It also lets me assign a model to each role, so the heavy thinking and the grunt work don't have to run on the same model.
+That's where it pairs especially well with T3 Code's orchestration capabilities: T3 Code can spin up subagents from a different provider than the main agent.
+For instance, I can have the main thread running on Claude while it delegates work to GPT-6.1 subagents.
+It's overkill for everyday changes, but it shines when the stakes are high.
+
 ## Test
 
 Once the feature is in place, I like to manually test it thoroughly to make sure it works as expected.
@@ -62,10 +72,8 @@ Skipping this step might result in regressions that are hard to catch later on.
 
 The last step before shipping the code is to review it to catch the last discrepancies.
 You have plenty of options for this, from _CodeRabbit_ and _Greptile_ in terms of cloud solutions, to local reviews with _Claude Code_ or _Codex code review_.
-I personnally like the `/thermo-nuclear-code-quality-review` skill from Cursor, because it fixes the main issue I have with most code review tools: they often lack ambition.
-Usually the agent treats the Git diffs as the boundary of what it can work on.
-This prompt goes a step further: it starts from the current branch's changes, then looks across the entire codebase for related opportunities.
-There are a lot more cool things about this skill, but I'll let you discover it for yourself.
+I personally use a custom-made code review skill, tailored to my stack and the things I care about: regressions, maintainability, and scope creep.
+When there are a lot of changes, I also use T3 Code's guided review feature, which walks me through the diff so I don't get lost in it.
 
 This is how I'm able to ship code with confidence: gradually building on top of the existing codebase while staying knowledgeable about how the system works.
 
@@ -75,7 +83,8 @@ This is how I'm able to ship code with confidence: gradually building on top of 
 
 ### Skills
 
-- [`/thermo-nuclear-code-quality-review`](https://www.skills.sh/cursor/plugins/thermo-nuclear-code-quality-review) from Cursor
+- [pstack](https://cursor.com/lp-team/lauren) by Lauren Tan for complex tasks
+- A custom-made code review skill
 - [`/frontend-design`](https://www.skills.sh/anthropics/skills/frontend-design) from Anthropic
 - `/local-commit` to generate commit messages
 - `/pr-description` to write pull request descriptions
