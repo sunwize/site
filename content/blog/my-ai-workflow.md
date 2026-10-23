@@ -58,7 +58,7 @@ It's an open-source collection of agent skills built around a router skill, `/po
 On top of that, it ships skills like `/architect` to explore several designs in parallel before writing code, `/arena` to have multiple models attempt the same task and keep the best result, and `/interrogate` for adversarial multi-model reviews.
 It also lets me assign a model to each role, so the heavy thinking and the grunt work don't have to run on the same model.
 That's where it pairs especially well with T3 Code's orchestration capabilities: T3 Code can spin up subagents from a different provider than the main agent.
-For instance, I can have the main thread running on Claude while it delegates work to GPT-6.1 subagents.
+For instance, I can have the main thread running on Claude while it delegates work to GPT subagents.
 It's overkill for everyday changes, but it shines when the stakes are high.
 
 ## Test
