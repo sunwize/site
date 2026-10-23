@@ -53,7 +53,7 @@ This enables me to iterate much more efficiently and get to the desired solution
 
 ## Complex tasks
 
-For bigger or trickier tasks, I reach for [pstack](https://cursor.com/lp-team/lauren) by Lauren Tan.
+For bigger or trickier tasks, I reach for [pstack](https://github.com/backnotprop/pstack) by Lauren Tan.
 It's an open-source collection of agent skills built around a router skill, `/poteto-mode`, which picks the right workflow for the task at hand.
 On top of that, it ships skills like `/architect` to explore several designs in parallel before writing code, `/arena` to have multiple models attempt the same task and keep the best result, and `/interrogate` for adversarial multi-model reviews.
 It also lets me assign a model to each role, so the heavy thinking and the grunt work don't have to run on the same model.
@@ -83,7 +83,7 @@ This is how I'm able to ship code with confidence: gradually building on top of 
 
 ### Skills
 
-- [pstack](https://cursor.com/lp-team/lauren) by Lauren Tan for complex tasks
+- [pstack](https://github.com/backnotprop/pstack) by Lauren Tan for complex tasks
 - A custom-made code review skill
 - [`/frontend-design`](https://www.skills.sh/anthropics/skills/frontend-design) from Anthropic
 - `/local-commit` to generate commit messages
