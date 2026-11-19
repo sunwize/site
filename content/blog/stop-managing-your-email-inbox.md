@@ -7,8 +7,8 @@ tags:
 draft: false
 ---
 
-I recently saw [Oskar ask on X](https://x.com/o_kwasniewski/status/2123148139196731515): _"who's building T3 Code but for email"_.
-My reaction turned into [a short hot take](https://x.com/SharpCoder/status/2123558168345104782) that I've been thinking about for a while now: **it makes no sense for a human being to spend time in their email inbox anymore.**
+This might be a hot take but I don't think it makes any sense for a human being to spend time in their email inbox anymore.
+In a world where agents can read, classify, summarize, and draft on our behalf, manually triaging emails feels like a relic from another era.
 
 These tasks should be delegated to agents.
 I genuinely can't remember the last time I stepped into my own inbox, and honestly, I have no intention of going back.
@@ -43,9 +43,8 @@ It just optimizes a job a human shouldn't be doing in the first place.
 
 ## Why faster email clients miss the point
 
-What made Oskar's tweet resonate so much is the comparison to [T3 Code](/blog/my-ai-workflow).
-
-In software engineering, the real leap wasn't making text editors slightly faster to type in.
+We already went through this exact shift in software engineering.
+The real leap wasn't making text editors slightly faster to type in.
 It was moving up a level of abstraction, where agents handle the heavy lifting in the background and your interface becomes a place to review outcomes and steer what needs attention.
 
 Email is an even more obvious candidate for that shift than code.
