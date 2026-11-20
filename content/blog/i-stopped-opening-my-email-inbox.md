@@ -11,7 +11,6 @@ I can't remember the last time I opened my email inbox.
 
 Not because I went off the grid.
 Not because I stopped answering people.
-And definitely not because I finally mastered _Inbox Zero_.
 
 I just stopped doing a job a human has no business doing anymore.
 
@@ -36,11 +35,12 @@ It's that we built an entire productivity industry around getting good at it.
 
 Split inboxes.
 Color-coded labels.
-Labyrinthine Gmail filter rules nobody remembers writing.
+Dozens of Gmail filters nobody remembers setting up.
 $30/month email clients engineered to shave 200 milliseconds off pressing `E` to archive a promotional email.
 
 Think about how absurd that is.
-We looked at a broken system that lets anyone on Earth drop a piece of paper onto our desk and put a red badge in our face until we deal with it, and our collective response was: _"How can I become a faster mailroom clerk?"_
+Anyone on Earth can drop a message onto your desk and stick a red badge in your face until you deal with it.
+Instead of questioning that, our collective response was: _"How can I become a faster mailroom clerk?"_
 
 And the real cost isn't even the time you spend sorting junk.
 It's what it does to your focus.
@@ -49,8 +49,6 @@ Archiving an email takes two seconds.
 Getting your focus back takes fifteen minutes.
 
 ## We already solved this in code
-
-What makes this even harder to defend is that we already figured out a better model somewhere much harder.
 
 In software engineering, nobody is bragging anymore about how fast they can hand-type in an editor.
 We moved up a layer.
@@ -66,44 +64,35 @@ Yet somehow, the same engineers who happily delegate entire features to AI agent
 
 <p class="text-center italic font-bold text-black">"Email is an API for agents, not a UI for humans."</p>
 
-## Handing over the keys (without losing the wheel)
-
-This isn't some futuristic concept.
-It's literally how I handle email today.
+## What my setup looks like
 
 My Grok Bot sits in front of my inbox and handles the triage layer around the clock.
 Receipts, automated digests, cold outreach, and promo emails get filtered out before I ever see them.
 
-When something actually matters (a real person, a real question, a real decision), the bot doesn't just tap me on the shoulder and hand me homework.
-It reads the thread, pulls the context, and proactively drafts the reply.
-Instead of staring at a blank compose box or putting off an easy response for three days because I'm not in the mood to write it, a solid draft is already sitting there waiting for me.
+When an email actually needs me, the bot reads the thread, pulls the relevant context, and proactively drafts a reply.
+Instead of staring at a blank compose box or putting off an easy message for three days, the answer is already waiting for me.
 
 That's the part people usually misunderstand when they hear _"delegate your inbox to an agent"_.
 They picture a rogue LLM hallucinating promises to their boss or accepting weird meetings at 2 AM on autopilot.
 
-That's not the deal.
-The agent does 95% of the work (reading, filtering, researching, writing) and stops right at the one boundary that actually carries weight: **hitting send**.
+That's not how it works.
+The agent does the reading, filtering, and drafting, and stops right before **hitting send**.
 It gets the inbox.
 I keep the send button.
 
-I glance at the draft, tweak a line if it doesn't quite sound like me, and approve it.
-Done.
+I glance at the draft, tweak a line if it doesn't sound like me, and approve it.
 
-## You aren't quitting email
+## Communicating != managing an inbox
 
 In an earlier post about [the future of software engineering](/blog/the-future-of-software-engineering), I wrote that _solving problems != writing code_.
-The same truth applies here: **communicating with people != managing an inbox**.
+The same distinction applies here.
 
 Talking to a teammate, a client, or a friend is worth your time.
-Acting as a human spam filter and notification router to reach them is not.
+Sorting through eighty automated messages to find them is not.
 
-Once you step out of your inbox, the weirdest part isn't even the time you get back.
-It's realizing how loud that background noise used to be.
-No unread badges glaring from the dock.
-No Sunday-night dread about what's waiting Monday morning.
-No mental tally of people you still owe a two-sentence reply.
+Once you step out of your inbox, the biggest surprise isn't even the time you get back.
+It's how much quieter your head feels without an unread counter hanging over you all day.
+Email goes back to what it was supposed to be: a way for humans to talk to each other.
 
-Email quietly goes back to what it was supposed to be all along: a way for humans to talk to each other.
-
-So stop hunting for a faster keyboard shortcut to archive garbage.
+Stop hunting for a faster shortcut to archive garbage.
 Give the inbox to an agent, and only show up when a human is actually needed.
