@@ -1,5 +1,5 @@
 ---
-title: Stop managing your email inbox
+title: I stopped opening my email inbox
 description: Why spending time in your email inbox makes no sense anymore, and what happens when you hand the triage layer to an agent.
 pubDate: 2026-11-19
 tags:
