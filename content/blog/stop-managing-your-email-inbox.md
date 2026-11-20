@@ -72,7 +72,7 @@ This isn't some futuristic concept.
 It's literally how I handle email today.
 
 My Grok Bot sits in front of my inbox and handles the triage layer around the clock.
-The receipts, the automated digests, the cold pitches, the _"just bumping this to the top of your inbox"_ follow-ups: they die quietly before they ever reach my eyes.
+Receipts, automated digests, cold outreach, and promo emails get filtered out before I ever see them.
 
 When something actually matters (a real person, a real question, a real decision), the bot doesn't just tap me on the shoulder and hand me homework.
 It reads the thread, pulls the context, and proactively drafts the reply.
