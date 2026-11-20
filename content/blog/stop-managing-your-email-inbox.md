@@ -52,7 +52,7 @@ Getting your focus back takes fifteen minutes.
 
 What makes this even harder to defend is that we already figured out a better model somewhere much harder.
 
-In software engineering, nobody is bragging anymore about how fast they can hand-type boilerplate in an editor.
+In software engineering, nobody is bragging anymore about how fast they can hand-type in an editor.
 We moved up a layer.
 Agents do the legwork in the background, and our job is to review the outcome, steer the direction, and make the calls that actually matter.
 
@@ -64,7 +64,7 @@ You do.
 
 Yet somehow, the same engineers who happily delegate entire features to AI agents still open Gmail every morning and hand-sort shipping confirmations like it's 2009.
 
-<p class="text-center italic font-bold text-black">"An inbox should be a queue for an agent, not a to-do list for a human."</p>
+<p class="text-center italic font-bold text-black">"Email is an API for agents, not a UI for humans."</p>
 
 ## Handing over the keys (without losing the wheel)
 
