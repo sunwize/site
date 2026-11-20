@@ -42,12 +42,11 @@ $30/month email clients engineered to shave 200 milliseconds off pressing `E` to
 Think about how absurd that is.
 We looked at a broken system that lets anyone on Earth drop a piece of paper onto our desk and put a red badge in our face until we deal with it, and our collective response was: _"How can I become a faster mailroom clerk?"_
 
-Nobody stopped to ask why a human was working the mailroom in the first place.
-
-Even the emails you delete in two seconds aren't free.
-Every subject line you scan is a tiny context switch.
-Every message you snooze or mark unread is a low-grade piece of guilt sitting in the back of your head until Friday.
-We pretend email takes twenty minutes a day, when in reality it quietly shreds the edges off every hour in between.
+And the real cost isn't even the time you spend sorting junk.
+It's what it does to your focus.
+Every time you check your inbox, you pull yourself out of real work to make twenty tiny decisions that don't matter.
+Archiving an email takes two seconds.
+Getting your focus back takes fifteen minutes.
 
 ## We already solved this in code
 
